@@ -1,0 +1,2 @@
+"0","cormat <- cor(SurveyData,use = ""complete.obs"")"
+"0","corrplot::corrplot.mixed(cormat,tl.cex = 0.6,addCoefasPercent = T,number.cex=0.6)"

@@ -1,0 +1,3 @@
+"0","RedundantInfo <- colnames(cormat)[caret::findCorrelation(cormat)]"
+"0","SurveyData %<>% "
+"0","  select(-AppPrefMean)"

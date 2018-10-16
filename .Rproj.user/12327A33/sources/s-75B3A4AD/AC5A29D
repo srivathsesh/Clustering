@@ -1,0 +1,24 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1538937817884.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "AC5A29D",
+    "lastKnownWriteTime" : 1538967145,
+    "last_content_update" : 1539055303469,
+    "path" : "~/Documents/Clustering/ClusteringNotebook.Rmd",
+    "project_path" : "ClusteringNotebook.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "cursorPosition" : "62,71",
+        "scrollLine" : "53",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

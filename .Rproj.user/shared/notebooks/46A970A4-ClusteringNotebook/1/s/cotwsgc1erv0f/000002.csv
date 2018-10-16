@@ -1,0 +1,8 @@
+"0","#library(factoextra)"
+"0","data(""multishapes"")"
+"0","df <- multishapes[, 1:2]"
+"0","set.seed(123)"
+"0","km.res <- kmeans(df, 5, nstart = 25)"
+"0","fviz_cluster(km.res, df,  geom = ""point"", "
+"0","             ellipse= FALSE, show.clust.cent = FALSE,"
+"0","             palette = ""jco"", ggtheme = theme_classic())"

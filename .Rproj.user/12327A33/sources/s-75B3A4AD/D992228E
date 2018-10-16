@@ -1,0 +1,24 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1539475363386.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1852064471",
+    "id" : "D992228E",
+    "lastKnownWriteTime" : 1539693402,
+    "last_content_update" : 1539693402820,
+    "path" : "~/Documents/Clustering/Solo1.Rmd",
+    "project_path" : "Solo1.Rmd",
+    "properties" : {
+        "cursorPosition" : "265,0",
+        "last_setup_crc32" : "75B3A4AD76255fde",
+        "scrollLine" : "255",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

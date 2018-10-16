@@ -1,0 +1,4 @@
+"0","kmClusters <- kmeans(SurveyDataStd,6)"
+"0","fviz_cluster(kmClusters,SurveyDataStd,  geom = ""point"", "
+"0","             ellipse= F, show.clust.cent = F,"
+"0","             palette = ""jco"", ggtheme = theme_classic())"

@@ -1,0 +1,8 @@
+]0;~/Documents/Clustering[?1034hsrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ [Ksrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ git [K init
+Initialized empty Git repository in /Users/srivathsanseshadri/Documents/Clustering/.git/
+]0;~/Documents/Clusteringsrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ git remote add orig[K[K[K[K[K[K[K[Kadd origin https://github.com/srivathsesh/Clustering.git
+]0;~/Documents/Clusteringsrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ git remote add origin https://github.com/srivathsesh/Clustering.git[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kgit remote -v
+origin	https://github.com/srivathsesh/Clustering.git (fetch)
+origin	https://github.com/srivathsesh/Clustering.git (push)
+]0;~/Documents/Clusteringsrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ gi [Kt fetch
+]0;~/Documents/Clusteringsrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ git add .

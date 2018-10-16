@@ -1,0 +1,2 @@
+"0","imputedData <- mice::mice(SurveyData,printFlag = F)"
+"0","SurveyData <- mice::complete(imputedData)"
