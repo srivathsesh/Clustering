@@ -1,4 +1,0 @@
-"0","hc <- hclust(dist(SurveyDataStd))"
-"0","hClusters <- cutree(hc,k = 4)"
-"0","plot(cluster::silhouette(hClusters,daisy(SurveyDataStd)))"
-"2","binary variable(s) 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14 treated as interval scaled"

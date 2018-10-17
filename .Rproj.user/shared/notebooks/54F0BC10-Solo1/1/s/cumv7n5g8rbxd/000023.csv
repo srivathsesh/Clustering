@@ -1,3 +1,0 @@
-"0","SurveyData %<>% select(-q5r1,-q2r10)"
-"0","cormat <- cor(SurveyData,use = ""complete.obs"")"
-"0","corrplot::corrplot(cormat,tl.cex = 0.6)"

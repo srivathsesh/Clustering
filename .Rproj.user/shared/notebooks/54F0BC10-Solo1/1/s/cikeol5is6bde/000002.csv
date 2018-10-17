@@ -1,7 +1,0 @@
-"0","library(recipes)"
-"0","rec <- recipe(SurveyData) %>% "
-"0","  step_center(everything()) %>% "
-"0","  step_scale(everything())"
-"0","SurveyDataPrep <- prep(rec,training = SurveyData, retain = T)"
-"0","#SurveyDataStd <- bake(SurveyDataPrep, newdata = SurveyData)"
-"0","SurveyDataStd <- juice(SurveyDataPrep)"

@@ -11,6 +11,7 @@ load("apphappyData.RData")
 library(dplyr)
 library(magrittr)
 library(caret)
+library(purrr)
 ```
 
 ## Introduction
@@ -118,7 +119,8 @@ SurveyData %<>%
 
 # Remove CaseID and make it a rowname instead
 
-  `rownames<-`(SurveyData,SurveyData$caseID)
+ # `rownames<-`(SurveyData,SurveyData$caseID)
+rownames(SurveyData) <- SurveyData$caseID
   SurveyData %<>% select(-caseID) 
 ```
 
@@ -141,7 +143,10 @@ SurveyData %<>%
 ```{r,message=F}
 
 imputedData <- mice::mice(SurveyData,printFlag = F)
-SurveyData <- mice::complete(imputedData)
+SurveyData_copy <- mice::complete(imputedData)
+rownames(SurveyData_copy) <- rownames(SurveyData)
+SurveyData <- SurveyData_copy
+rownames(SurveyData) <- rownames(SurveyData_copy)
 ```
 
 # Center and Standardize
@@ -190,6 +195,7 @@ hist(map_dbl(bt_sampples$HC,max),
 # Applying 4 cluster solution to the hierarchical clusters
 
 ```{r}
+library(cluster)
 hc <- hclust(dist(SurveyDataStd))
 hClusters <- cutree(hc,k = 4)
 
@@ -248,6 +254,7 @@ fviz_cluster(db, data = SurveyDataStd, stand = FALSE,
 # tsne
 
 ```{r}
+library(Rtsne)
 tsne <- Rtsne::Rtsne(SurveyDataStd,dims = 2, perplexity=30, verbose=TRUE, max_iter = 500,pca_center = F)
 
 dbscan::kNNdistplot(tsne$Y, k =  6)
@@ -256,12 +263,57 @@ abline(h = 1.5, lty = 2)
 
 ```{r}
 db2 <- fpc::dbscan(tsne$Y, eps = 1.5, MinPts = 3)
+
 # Plot DBSCAN results
 library("factoextra")
 tsnedf <- tsne$Y
-colnames(tsnedf) <- c('PC1','PC2')
+colnames(tsnedf) <- c('Dim1','Dim2')
 fviz_cluster(db2, data = tsnedf, stand = FALSE,
              ellipse = FALSE, show.clust.cent = FALSE,
-             geom = "point", ggtheme = theme_classic())
+             geom = "point", ggtheme = theme_classic(),
+             palette = 'fco')
+```
+
+```{r}
+fviz_nbclust(tsnedf, pam, method = "wss")
+set.seed(10)
+pamclust <- pam(tsnedf,8)
+fviz_cluster(pamclust, 
+             palette = "jco", # color palette
+             ellipse = T,
+             #ellipse.type = "t", # Concentration ellipse
+             repel = F, # Avoid label overplotting (slow)
+             labelsize = 3,
+             ggtheme = theme_classic(),
+             stand = F
+             )
+```
+
+```{r}
+clusters <- pamclust$clustering
+
+# put it back into SurveyData
+SurveyData %<>%
+  mutate(Clusters = clusters)
+rownames(SurveyData) <- rownames(SurveyData_copy)
+# write to file
+
+write.csv(SurveyData,file = 'SurveyClusters.csv')
+```
+
+# Random Forest
+
+```{r}
+# Change Clusters into a factor
+SurveyData$Clusters <- as.factor(SurveyData$Clusters)
+
+# Train a classification tree
+trctrl <- trainControl(method = "repeatedcv", number = 10, repeats = 3)
+dtree_fit <- train(Clusters ~., data = SurveyData, method = "rpart",
+                   trControl = trctrl,
+                   tuneLength = 10)
+
+mdlfit <- dtree_fit$finalModel
+
 ```
 

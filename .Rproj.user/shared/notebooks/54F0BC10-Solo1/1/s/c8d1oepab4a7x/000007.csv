@@ -1,7 +1,0 @@
-"0","set.seed(123)"
-"0","db <- fpc::dbscan(SurveyDataStd, eps = 4.5, MinPts = 5)"
-"0","# Plot DBSCAN results"
-"0","library(""factoextra"")"
-"0","fviz_cluster(db, data = SurveyDataStd, stand = FALSE,"
-"0","             ellipse = FALSE, show.clust.cent = FALSE,"
-"0","             geom = ""point"",palette = ""jco"", ggtheme = theme_classic())"

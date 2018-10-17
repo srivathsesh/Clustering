@@ -6,3 +6,393 @@ origin	https://github.com/srivathsesh/Clustering.git (fetch)
 origin	https://github.com/srivathsesh/Clustering.git (push)
 ]0;~/Documents/Clusteringsrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ gi [Kt fetch
 ]0;~/Documents/Clusteringsrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ git add .
+]0;~/Documents/Clusteringsrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ git v[Kcomm[K[K[K[Kstatus
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	[32mnew file:   .RData[m
+	[32mnew file:   .Rhistory[m
+	[32mnew file:   .Rproj.user/12327A33/console06/59BA42B7[m
+	[32mnew file:   .Rproj.user/12327A33/console06/59BA42B7.env[m
+	[32mnew file:   .Rproj.user/12327A33/console06/INDEX001[m
+	[32mnew file:   .Rproj.user/12327A33/pcs/files-pane.pper[m
+	[32mnew file:   .Rproj.user/12327A33/pcs/source-pane.pper[m
+	[32mnew file:   .Rproj.user/12327A33/pcs/windowlayoutstate.pper[m
+	[32mnew file:   .Rproj.user/12327A33/pcs/workbench-pane.pper[m
+	[32mnew file:   .Rproj.user/12327A33/rmd-outputs[m
+	[32mnew file:   .Rproj.user/12327A33/saved_source_markers[m
+	[32mnew file:   .Rproj.user/12327A33/sources/prop/41551F75[m
+	[32mnew file:   .Rproj.user/12327A33/sources/prop/C3E0E25A[m
+	[32mnew file:   .Rproj.user/12327A33/sources/prop/CE5C1FD3[m
+	[32mnew file:   .Rproj.user/12327A33/sources/prop/INDEX[m
+	[32mnew file:   .Rproj.user/12327A33/sources/s-75B3A4AD/38F2EA12-contents[m
+	[32mnew file:   .Rproj.user/12327A33/sources/s-75B3A4AD/480B0F6E-contents[m
+	[32mnew file:   .Rproj.user/12327A33/sources/s-75B3A4AD/4F89FF6B[m
+	[32mnew file:   .Rproj.user/12327A33/sources/s-75B3A4AD/4F89FF6B-contents[m
+	[32mnew file:   .Rproj.user/12327A33/sources/s-75B3A4AD/959E8688[m
+	[32mnew file:   .Rproj.user/12327A33/sources/s-75B3A4AD/959E8688-contents[m
+	[32mnew file:   .Rproj.user/12327A33/sources/s-75B3A4AD/A15503D4[m
+	[32mnew file:   .Rproj.user/12327A33/sources/s-75B3A4AD/A15503D4-contents[m
+	[32mnew file:   .Rproj.user/12327A33/sources/s-75B3A4AD/AC5A29D[m
+	[32mnew file:   .Rproj.user/12327A33/sources/s-75B3A4AD/AC5A29D-contents[m
+	[32mnew file:   .Rproj.user/12327A33/sources/s-75B3A4AD/B2C9BA77[m
+	[32mnew file:   .Rproj.user/12327A33/sources/s-75B3A4AD/B2C9BA77-contents[m
+	[32mnew file:   .Rproj.user/12327A33/sources/s-75B3A4AD/D992228E[m
+	[32mnew file:   .Rproj.user/12327A33/sources/s-75B3A4AD/D992228E-contents[m
+	[32mnew file:   .Rproj.user/12327A33/sources/s-75B3A4AD/FA15D45B-contents[m
+	[32mnew file:   .Rproj.user/12327A33/sources/s-75B3A4AD/lock_file[m
+	[32mnew file:   .Rproj.user/12327A33/viewer-cache/3B8C745F.Rdata[m
+	[32mnew file:   .Rproj.user/12327A33/viewer-cache/A8610DDE.Rdata[m
+	[32mnew file:   .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/12327A331EE08664/chunks.json[m
+	[32mnew file:   .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/c3v87gxflx7x0/000009.metadata[m
+	[32mnew file:   .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/c3v87gxflx7x0/000009.png[m
+	[32mnew file:   .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/c3v87gxflx7x0/000009.snapshot[m
+	[32mnew file:   .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/c8e3esylx9p96/00000a.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/c8e3esylx9p96/00000b.metadata[m
+	[32mnew file:   .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/c8e3esylx9p96/00000b.png[m
+	[32mnew file:   .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/c8e3esylx9p96/00000b.snapshot[m
+	[32mnew file:   .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/ce2wxhv64vmq4/00000a.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/ce2wxhv64vmq4/00000c.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/ce2wxhv64vmq4/00000d.metadata[m
+	[32mnew file:   .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/ce2wxhv64vmq4/00000d.png[m
+	[32mnew file:   .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/ce2wxhv64vmq4/00000d.snapshot[m
+	[32mnew file:   .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/chunks.json[m
+	[32mnew file:   .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/clw321m7kn371/000013.metadata[m
+	[32mnew file:   .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/clw321m7kn371/000013.png[m
+	[32mnew file:   .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/clw321m7kn371/000013.snapshot[m
+	[32mnew file:   .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/cotwsgc1erv0f/000002.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/cotwsgc1erv0f/000003.metadata[m
+	[32mnew file:   .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/cotwsgc1erv0f/000003.png[m
+	[32mnew file:   .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/cotwsgc1erv0f/000003.snapshot[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/12327A3375B3A4AD/chunks.json[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c03viu9krs1ug/000004.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c04tpiso6b9re/000008.metadata[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c04tpiso6b9re/000008.png[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c04tpiso6b9re/000008.snapshot[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c2v3ip0cse735/000004.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c6ofcowcmxwci/000002.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8d1oepab4a7x/000007.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8d1oepab4a7x/000008.metadata[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8d1oepab4a7x/000008.png[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8d1oepab4a7x/000008.snapshot[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/000019.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/00001a.metadata[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/00001a.png[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/00001a.snapshot[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/00001b.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/00001c.metadata[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/00001c.png[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/00001c.snapshot[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/ce1zf6fe0u1e5/00000c.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/chunks.json[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cikeol5is6bde/000002.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000053.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000054.metadata[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000054.png[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000054.snapshot[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000055.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000056.metadata[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000056.png[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000056.snapshot[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/ckl0xd9cfaaua/00000e.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/ckl0xd9cfaaua/000010.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/ckl0xd9cfaaua/000011.metadata[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/ckl0xd9cfaaua/000011.png[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/ckl0xd9cfaaua/000011.snapshot[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/clcooak5kz7iw/00000b.metadata[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/clcooak5kz7iw/00000b.png[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/clcooak5kz7iw/00000b.snapshot[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/coap9djrid8eg/000019.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/coap9djrid8eg/00001a.metadata[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/coap9djrid8eg/00001a.png[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/coap9djrid8eg/00001a.snapshot[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cql89x3eabfp6/000012.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cql89x3eabfp6/000013.metadata[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cql89x3eabfp6/000013.png[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cql89x3eabfp6/000013.snapshot[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/csetup_chunk/000002.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cumv7n5g8rbxd/000023.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cumv7n5g8rbxd/000024.metadata[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cumv7n5g8rbxd/000024.png[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cumv7n5g8rbxd/000024.snapshot[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cw12ulrdd4i37/000033.metadata[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cw12ulrdd4i37/000033.png[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cw12ulrdd4i37/000033.snapshot[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cydg5rmnajg5z/00004d.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cydg5rmnajg5z/00004e.metadata[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cydg5rmnajg5z/00004e.rdf[m
+	[32mnew file:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cydg5rmnajg5z/00004f.csv[m
+	[32mnew file:   .Rproj.user/shared/notebooks/patch-chunk-names[m
+	[32mnew file:   .Rproj.user/shared/notebooks/paths[m
+	[32mnew file:   Clustering.Rproj[m
+	[32mnew file:   ClusteringNotebook.Rmd[m
+	[32mnew file:   ClusteringNotebook.nb.html[m
+	[32mnew file:   Predict450Solo1ProjectDescription.pdf[m
+	[32mnew file:   Solo1.Rmd[m
+	[32mnew file:   Solo1SkeletonRCode.R[m
+	[32mnew file:   apphappy-quex-sum2014.pdf[m
+	[32mnew file:   apphappyData.RData[m
+	[32mnew file:   clusterresults.csv[m
+	[32mnew file:   numsub.csv[m
+	[32mnew file:   stabilityClustering.pdf[m
+	[32mnew file:   survey.txt[m
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .Rproj.user/12327A33/console06/59BA42B7[m
+
+]0;~/Documents/Clusteringsrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ git commit -m 'solo1'
+[master (root-commit) b0238a5] solo1
+ 126 files changed, 7824 insertions(+)
+ create mode 100644 .RData
+ create mode 100644 .Rhistory
+ create mode 100644 .Rproj.user/12327A33/console06/59BA42B7
+ create mode 100644 .Rproj.user/12327A33/console06/59BA42B7.env
+ create mode 100644 .Rproj.user/12327A33/console06/INDEX001
+ create mode 100644 .Rproj.user/12327A33/pcs/files-pane.pper
+ create mode 100644 .Rproj.user/12327A33/pcs/source-pane.pper
+ create mode 100644 .Rproj.user/12327A33/pcs/windowlayoutstate.pper
+ create mode 100644 .Rproj.user/12327A33/pcs/workbench-pane.pper
+ create mode 100644 .Rproj.user/12327A33/rmd-outputs
+ create mode 100644 .Rproj.user/12327A33/saved_source_markers
+ create mode 100644 .Rproj.user/12327A33/sources/prop/41551F75
+ create mode 100644 .Rproj.user/12327A33/sources/prop/C3E0E25A
+ create mode 100644 .Rproj.user/12327A33/sources/prop/CE5C1FD3
+ create mode 100644 .Rproj.user/12327A33/sources/prop/INDEX
+ create mode 100644 .Rproj.user/12327A33/sources/s-75B3A4AD/38F2EA12-contents
+ create mode 100644 .Rproj.user/12327A33/sources/s-75B3A4AD/480B0F6E-contents
+ create mode 100644 .Rproj.user/12327A33/sources/s-75B3A4AD/4F89FF6B
+ create mode 100644 .Rproj.user/12327A33/sources/s-75B3A4AD/4F89FF6B-contents
+ create mode 100644 .Rproj.user/12327A33/sources/s-75B3A4AD/959E8688
+ create mode 100644 .Rproj.user/12327A33/sources/s-75B3A4AD/959E8688-contents
+ create mode 100644 .Rproj.user/12327A33/sources/s-75B3A4AD/A15503D4
+ create mode 100644 .Rproj.user/12327A33/sources/s-75B3A4AD/A15503D4-contents
+ create mode 100644 .Rproj.user/12327A33/sources/s-75B3A4AD/AC5A29D
+ create mode 100644 .Rproj.user/12327A33/sources/s-75B3A4AD/AC5A29D-contents
+ create mode 100644 .Rproj.user/12327A33/sources/s-75B3A4AD/B2C9BA77
+ create mode 100644 .Rproj.user/12327A33/sources/s-75B3A4AD/B2C9BA77-contents
+ create mode 100644 .Rproj.user/12327A33/sources/s-75B3A4AD/D992228E
+ create mode 100644 .Rproj.user/12327A33/sources/s-75B3A4AD/D992228E-contents
+ create mode 100644 .Rproj.user/12327A33/sources/s-75B3A4AD/FA15D45B-contents
+ create mode 100644 .Rproj.user/12327A33/sources/s-75B3A4AD/lock_file
+ create mode 100644 .Rproj.user/12327A33/viewer-cache/3B8C745F.Rdata
+ create mode 100644 .Rproj.user/12327A33/viewer-cache/A8610DDE.Rdata
+ create mode 100644 .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/12327A331EE08664/chunks.json
+ create mode 100644 .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/c3v87gxflx7x0/000009.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/c3v87gxflx7x0/000009.png
+ create mode 100644 .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/c3v87gxflx7x0/000009.snapshot
+ create mode 100644 .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/c8e3esylx9p96/00000a.csv
+ create mode 100644 .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/c8e3esylx9p96/00000b.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/c8e3esylx9p96/00000b.png
+ create mode 100644 .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/c8e3esylx9p96/00000b.snapshot
+ create mode 100644 .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/ce2wxhv64vmq4/00000a.csv
+ create mode 100644 .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/ce2wxhv64vmq4/00000c.csv
+ create mode 100644 .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/ce2wxhv64vmq4/00000d.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/ce2wxhv64vmq4/00000d.png
+ create mode 100644 .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/ce2wxhv64vmq4/00000d.snapshot
+ create mode 100644 .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/chunks.json
+ create mode 100644 .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/clw321m7kn371/000013.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/clw321m7kn371/000013.png
+ create mode 100644 .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/clw321m7kn371/000013.snapshot
+ create mode 100644 .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/cotwsgc1erv0f/000002.csv
+ create mode 100644 .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/cotwsgc1erv0f/000003.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/cotwsgc1erv0f/000003.png
+ create mode 100644 .Rproj.user/shared/notebooks/46A970A4-ClusteringNotebook/1/s/cotwsgc1erv0f/000003.snapshot
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/12327A3375B3A4AD/chunks.json
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c03viu9krs1ug/000004.csv
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c04tpiso6b9re/000008.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c04tpiso6b9re/000008.png
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c04tpiso6b9re/000008.snapshot
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c2v3ip0cse735/000004.csv
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c6ofcowcmxwci/000002.csv
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8d1oepab4a7x/000007.csv
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8d1oepab4a7x/000008.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8d1oepab4a7x/000008.png
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8d1oepab4a7x/000008.snapshot
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/000019.csv
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/00001a.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/00001a.png
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/00001a.snapshot
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/00001b.csv
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/00001c.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/00001c.png
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/00001c.snapshot
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/ce1zf6fe0u1e5/00000c.csv
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/chunks.json
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cikeol5is6bde/000002.csv
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000053.csv
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000054.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000054.png
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000054.snapshot
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000055.csv
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000056.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000056.png
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000056.snapshot
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/ckl0xd9cfaaua/00000e.csv
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/ckl0xd9cfaaua/000010.csv
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/ckl0xd9cfaaua/000011.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/ckl0xd9cfaaua/000011.png
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/ckl0xd9cfaaua/000011.snapshot
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/clcooak5kz7iw/00000b.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/clcooak5kz7iw/00000b.png
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/clcooak5kz7iw/00000b.snapshot
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/coap9djrid8eg/000019.csv
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/coap9djrid8eg/00001a.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/coap9djrid8eg/00001a.png
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/coap9djrid8eg/00001a.snapshot
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cql89x3eabfp6/000012.csv
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cql89x3eabfp6/000013.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cql89x3eabfp6/000013.png
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cql89x3eabfp6/000013.snapshot
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/csetup_chunk/000002.csv
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cumv7n5g8rbxd/000023.csv
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cumv7n5g8rbxd/000024.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cumv7n5g8rbxd/000024.png
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cumv7n5g8rbxd/000024.snapshot
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cw12ulrdd4i37/000033.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cw12ulrdd4i37/000033.png
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cw12ulrdd4i37/000033.snapshot
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cydg5rmnajg5z/00004d.csv
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cydg5rmnajg5z/00004e.metadata
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cydg5rmnajg5z/00004e.rdf
+ create mode 100644 .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cydg5rmnajg5z/00004f.csv
+ create mode 100644 .Rproj.user/shared/notebooks/patch-chunk-names
+ create mode 100644 .Rproj.user/shared/notebooks/paths
+ create mode 100644 Clustering.Rproj
+ create mode 100644 ClusteringNotebook.Rmd
+ create mode 100644 ClusteringNotebook.nb.html
+ create mode 100644 Predict450Solo1ProjectDescription.pdf
+ create mode 100644 Solo1.Rmd
+ create mode 100644 Solo1SkeletonRCode.R
+ create mode 100644 apphappy-quex-sum2014.pdf
+ create mode 100644 apphappyData.RData
+ create mode 100644 clusterresults.csv
+ create mode 100644 numsub.csv
+ create mode 100644 stabilityClustering.pdf
+ create mode 100644 survey.txt
+]0;~/Documents/Clusteringsrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ git push origin master
+git: 'credential-read-only' is not a git command. See 'git --help'.
+error: cannot run rpostback-askpass: No such file or directory
+Username for 'https://github.com': srivathsesh
+error: cannot run rpostback-askpass: No such file or directory
+Password for 'https://srivathsesh@github.com': 
+git: 'credential-read-only' is not a git command. See 'git --help'.
+Counting objects: 143, done.
+Delta compression using up to 8 threads.
+Compressing objects:   0% (1/123)   Compressing objects:   1% (2/123)   Compressing objects:   2% (3/123)   Compressing objects:   3% (4/123)   Compressing objects:   4% (5/123)   Compressing objects:   5% (7/123)   Compressing objects:   6% (8/123)   Compressing objects:   7% (9/123)   Compressing objects:   8% (10/123)   Compressing objects:   9% (12/123)   Compressing objects:  10% (13/123)   Compressing objects:  11% (14/123)   Compressing objects:  12% (15/123)   Compressing objects:  13% (16/123)   Compressing objects:  14% (18/123)   Compressing objects:  15% (19/123)   Compressing objects:  16% (20/123)   Compressing objects:  17% (21/123)   Compressing objects:  18% (23/123)   Compressing objects:  19% (24/123)   Compressing objects:  20% (25/123)   Compressing objects:  21% (26/123)   Compressing objects:  22% (28/123)   Compressing objects:  23% (29/123)   Compressing objects:  24% (30/123)   Compressing objects:  25% (31/123)   Compressing objects:  26% (32/123)   Compressing objects:  27% (34/123)   Compressing objects:  28% (35/123)   Compressing objects:  29% (36/123)   Compressing objects:  30% (37/123)   Compressing objects:  31% (39/123)   Compressing objects:  32% (40/123)   Compressing objects:  33% (41/123)   Compressing objects:  34% (42/123)   Compressing objects:  35% (44/123)   Compressing objects:  36% (45/123)   Compressing objects:  37% (46/123)   Compressing objects:  38% (47/123)   Compressing objects:  39% (48/123)   Compressing objects:  40% (50/123)   Compressing objects:  41% (51/123)   Compressing objects:  42% (52/123)   Compressing objects:  43% (53/123)   Compressing objects:  44% (55/123)   Compressing objects:  45% (56/123)   Compressing objects:  46% (57/123)   Compressing objects:  47% (58/123)   Compressing objects:  48% (60/123)   Compressing objects:  49% (61/123)   Compressing objects:  50% (62/123)   Compressing objects:  51% (63/123)   Compressing objects:  52% (64/123)   Compressing objects:  53% (66/123)   Compressing objects:  54% (67/123)   Compressing objects:  55% (68/123)   Compressing objects:  56% (69/123)   Compressing objects:  57% (71/123)   Compressing objects:  58% (72/123)   Compressing objects:  59% (73/123)   Compressing objects:  60% (74/123)   Compressing objects:  61% (76/123)   Compressing objects:  62% (77/123)   Compressing objects:  63% (78/123)   Compressing objects:  64% (79/123)   Compressing objects:  65% (80/123)   Compressing objects:  66% (82/123)   Compressing objects:  67% (83/123)   Compressing objects:  68% (84/123)   Compressing objects:  69% (85/123)   Compressing objects:  70% (87/123)   Compressing objects:  71% (88/123)   Compressing objects:  72% (89/123)   Compressing objects:  73% (90/123)   Compressing objects:  74% (92/123)   Compressing objects:  75% (93/123)   Compressing objects:  76% (94/123)   Compressing objects:  77% (95/123)   Compressing objects:  78% (96/123)   Compressing objects:  79% (98/123)   Compressing objects:  80% (99/123)   Compressing objects:  81% (100/123)   Compressing objects:  82% (101/123)   Compressing objects:  83% (103/123)   Compressing objects:  84% (104/123)   Compressing objects:  85% (105/123)   Compressing objects:  86% (106/123)   Compressing objects:  87% (108/123)   Compressing objects:  88% (109/123)   Compressing objects:  89% (110/123)   Compressing objects:  90% (111/123)   Compressing objects:  91% (112/123)   Compressing objects:  92% (114/123)   Compressing objects:  93% (115/123)   Compressing objects:  94% (116/123)   Compressing objects:  95% (117/123)   Compressing objects:  96% (119/123)   Compressing objects:  97% (120/123)   Compressing objects:  98% (121/123)   Compressing objects:  99% (122/123)   Compressing objects: 100% (123/123)   Compressing objects: 100% (123/123), done.
+Writing objects:   0% (1/143)   Writing objects:   1% (2/143)   Writing objects:   2% (3/143)   Writing objects:   3% (5/143)   Writing objects:   4% (6/143)   Writing objects:   5% (8/143)   Writing objects:   6% (9/143)   Writing objects:   7% (11/143)   Writing objects:   8% (12/143)   Writing objects:   9% (13/143)   Writing objects:  10% (15/143)   Writing objects:  11% (16/143)   Writing objects:  12% (18/143)   Writing objects:  13% (19/143)   Writing objects:  15% (22/143)   Writing objects:  16% (23/143)   Writing objects:  17% (25/143)   Writing objects:  18% (26/143)   Writing objects:  19% (28/143)   Writing objects:  20% (29/143)   Writing objects:  22% (32/143)   Writing objects:  23% (33/143)   Writing objects:  24% (35/143)   Writing objects:  25% (36/143)   Writing objects:  26% (38/143)   Writing objects:  27% (39/143)   Writing objects:  28% (41/143)   Writing objects:  29% (42/143)   Writing objects:  30% (44/143)   Writing objects:  31% (45/143)   Writing objects:  32% (46/143)   Writing objects:  33% (48/143)   Writing objects:  34% (49/143)   Writing objects:  35% (51/143)   Writing objects:  36% (52/143)   Writing objects:  37% (53/143)   Writing objects:  38% (55/143)   Writing objects:  39% (56/143)   Writing objects:  40% (58/143)   Writing objects:  41% (59/143)   Writing objects:  42% (61/143)   Writing objects:  43% (62/143), 1.07 MiB | 1.29 MiB/s   Writing objects:  44% (63/143), 1.07 MiB | 1.29 MiB/s   Writing objects:  44% (64/143), 1.19 MiB | 872.00 KiB/s   Writing objects:  45% (65/143), 1.19 MiB | 872.00 KiB/s   Writing objects:  46% (66/143), 1.19 MiB | 872.00 KiB/s   Writing objects:  47% (68/143), 1.19 MiB | 872.00 KiB/s   Writing objects:  48% (69/143), 1.19 MiB | 872.00 KiB/s   Writing objects:  49% (71/143), 1.19 MiB | 872.00 KiB/s   Writing objects:  50% (72/143), 1.19 MiB | 872.00 KiB/s   Writing objects:  51% (73/143), 1.19 MiB | 872.00 KiB/s   Writing objects:  51% (74/143), 1.87 MiB | 965.00 KiB/s   Writing objects:  52% (75/143), 1.87 MiB | 965.00 KiB/s   Writing objects:  53% (76/143), 2.51 MiB | 1.00 MiB/s   Writing objects:  54% (78/143), 2.51 MiB | 1.00 MiB/s   Writing objects:  55% (79/143), 2.51 MiB | 1.00 MiB/s   Writing objects:  56% (81/143), 2.51 MiB | 1.00 MiB/s   Writing objects:  57% (82/143), 2.51 MiB | 1.00 MiB/s   Writing objects:  58% (83/143), 2.51 MiB | 1.00 MiB/s   Writing objects:  58% (83/143), 3.20 MiB | 1.06 MiB/s   Writing objects:  59% (85/143), 3.20 MiB | 1.06 MiB/s   Writing objects:  60% (86/143), 3.20 MiB | 1.06 MiB/s   Writing objects:  61% (88/143), 3.20 MiB | 1.06 MiB/s   Writing objects:  62% (89/143), 3.20 MiB | 1.06 MiB/s   Writing objects:  63% (91/143), 3.70 MiB | 1.05 MiB/s   Writing objects:  64% (92/143), 3.70 MiB | 1.05 MiB/s   Writing objects:  65% (93/143), 3.70 MiB | 1.05 MiB/s   Writing objects:  66% (95/143), 3.70 MiB | 1.05 MiB/s   Writing objects:  67% (96/143), 3.70 MiB | 1.05 MiB/s   Writing objects:  68% (98/143), 3.70 MiB | 1.05 MiB/s   Writing objects:  69% (99/143), 3.70 MiB | 1.05 MiB/s   Writing objects:  69% (100/143), 4.26 MiB | 1.04 MiB/s   Writing objects:  70% (101/143), 4.26 MiB | 1.04 MiB/s   Writing objects:  71% (102/143), 4.26 MiB | 1.04 MiB/s   Writing objects:  72% (103/143), 4.26 MiB | 1.04 MiB/s   Writing objects:  73% (105/143), 4.26 MiB | 1.04 MiB/s   Writing objects:  74% (106/143), 4.26 MiB | 1.04 MiB/s   Writing objects:  75% (108/143), 4.26 MiB | 1.04 MiB/s   Writing objects:  76% (109/143), 4.26 MiB | 1.04 MiB/s   Writing objects:  77% (111/143), 4.26 MiB | 1.04 MiB/s   Writing objects:  78% (112/143), 4.26 MiB | 1.04 MiB/s   Writing objects:  79% (113/143), 4.82 MiB | 1.03 MiB/s   Writing objects:  80% (115/143), 4.82 MiB | 1.03 MiB/s   Writing objects:  81% (116/143), 4.82 MiB | 1.03 MiB/s   Writing objects:  82% (118/143), 4.82 MiB | 1.03 MiB/s   Writing objects:  83% (119/143), 4.82 MiB | 1.03 MiB/s   Writing objects:  84% (121/143), 4.82 MiB | 1.03 MiB/s   Writing objects:  85% (122/143), 4.82 MiB | 1.03 MiB/s   Writing objects:  85% (122/143), 5.76 MiB | 949.00 KiB/s   Writing objects:  86% (123/143), 5.76 MiB | 949.00 KiB/s   Writing objects:  87% (125/143), 5.76 MiB | 949.00 KiB/s   Writing objects:  88% (126/143), 5.76 MiB | 949.00 KiB/s   Writing objects:  89% (128/143), 5.76 MiB | 949.00 KiB/s   Writing objects:  90% (129/143), 5.76 MiB | 949.00 KiB/s   Writing objects:  91% (131/143), 5.76 MiB | 949.00 KiB/s   Writing objects:  92% (132/143), 5.76 MiB | 949.00 KiB/s   Writing objects:  93% (133/143), 5.76 MiB | 949.00 KiB/s   Writing objects:  93% (134/143), 6.20 MiB | 773.00 KiB/s   Writing objects:  93% (134/143), 6.38 MiB | 656.00 KiB/s   Writing objects:  93% (134/143), 6.82 MiB | 521.00 KiB/s   Writing objects:  94% (135/143), 6.82 MiB | 521.00 KiB/s   Writing objects:  94% (135/143), 7.32 MiB | 420.00 KiB/s   Writing objects:  95% (136/143), 7.32 MiB | 420.00 KiB/s   Writing objects:  96% (138/143), 7.32 MiB | 420.00 KiB/s   Writing objects:  96% (138/143), 7.57 MiB | 410.00 KiB/s   Writing objects:  97% (139/143), 7.57 MiB | 410.00 KiB/s   Writing objects:  98% (141/143), 7.57 MiB | 410.00 KiB/s   Writing objects:  99% (142/143), 7.57 MiB | 410.00 KiB/s   Writing objects: 100% (143/143), 7.78 MiB | 396.00 KiB/s   Writing objects: 100% (143/143), 7.84 MiB | 394.00 KiB/s, done.
+Total 143 (delta 8), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/8)   [Kremote: Resolving deltas:  50% (4/8)   [Kremote: Resolving deltas:  75% (6/8)   [Kremote: Resolving deltas:  87% (7/8)   [Kremote: Resolving deltas: 100% (8/8)   [Kremote: Resolving deltas: 100% (8/8), done.[K
+remote: 
+remote: Create a pull request for 'master' on GitHub by visiting:[K
+remote:      https://github.com/srivathsesh/Clustering/pull/new/master[K
+remote: 
+To https://github.com/srivathsesh/Clustering.git
+ * [new branch]      master -> master
+[Ksrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ git sts[Katus
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .RData[m
+	[31mmodified:   .Rhistory[m
+	[31mmodified:   .Rproj.user/12327A33/console06/59BA42B7[m
+	[31mmodified:   .Rproj.user/12327A33/console06/INDEX001[m
+	[31mmodified:   .Rproj.user/12327A33/pcs/source-pane.pper[m
+	[31mmodified:   .Rproj.user/12327A33/pcs/windowlayoutstate.pper[m
+	[31mmodified:   .Rproj.user/12327A33/sources/prop/41551F75[m
+	[31mmodified:   .Rproj.user/12327A33/sources/prop/C3E0E25A[m
+	[31mmodified:   .Rproj.user/12327A33/sources/prop/CE5C1FD3[m
+	[31mmodified:   .Rproj.user/12327A33/sources/prop/INDEX[m
+	[31mdeleted:    .Rproj.user/12327A33/sources/s-75B3A4AD/38F2EA12-contents[m
+	[31mdeleted:    .Rproj.user/12327A33/sources/s-75B3A4AD/480B0F6E-contents[m
+	[31mdeleted:    .Rproj.user/12327A33/sources/s-75B3A4AD/4F89FF6B[m
+	[31mdeleted:    .Rproj.user/12327A33/sources/s-75B3A4AD/4F89FF6B-contents[m
+	[31mdeleted:    .Rproj.user/12327A33/sources/s-75B3A4AD/959E8688[m
+	[31mdeleted:    .Rproj.user/12327A33/sources/s-75B3A4AD/959E8688-contents[m
+	[31mdeleted:    .Rproj.user/12327A33/sources/s-75B3A4AD/A15503D4[m
+	[31mdeleted:    .Rproj.user/12327A33/sources/s-75B3A4AD/A15503D4-contents[m
+	[31mdeleted:    .Rproj.user/12327A33/sources/s-75B3A4AD/AC5A29D[m
+	[31mdeleted:    .Rproj.user/12327A33/sources/s-75B3A4AD/AC5A29D-contents[m
+	[31mdeleted:    .Rproj.user/12327A33/sources/s-75B3A4AD/B2C9BA77[m
+	[31mdeleted:    .Rproj.user/12327A33/sources/s-75B3A4AD/B2C9BA77-contents[m
+	[31mdeleted:    .Rproj.user/12327A33/sources/s-75B3A4AD/D992228E[m
+	[31mdeleted:    .Rproj.user/12327A33/sources/s-75B3A4AD/D992228E-contents[m
+	[31mdeleted:    .Rproj.user/12327A33/sources/s-75B3A4AD/FA15D45B-contents[m
+	[31mdeleted:    .Rproj.user/12327A33/sources/s-75B3A4AD/lock_file[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c03viu9krs1ug/000004.csv[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c04tpiso6b9re/000008.metadata[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c04tpiso6b9re/000008.png[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c04tpiso6b9re/000008.snapshot[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c2v3ip0cse735/000004.csv[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c6ofcowcmxwci/000002.csv[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8d1oepab4a7x/000007.csv[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8d1oepab4a7x/000008.metadata[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8d1oepab4a7x/000008.png[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8d1oepab4a7x/000008.snapshot[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/000019.csv[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/00001a.metadata[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/00001a.png[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/00001a.snapshot[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/00001b.csv[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/00001c.metadata[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/00001c.png[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/c8i1c3tyvma00/00001c.snapshot[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/ce1zf6fe0u1e5/00000c.csv[m
+	[31mmodified:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/chunks.json[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cikeol5is6bde/000002.csv[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000053.csv[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000054.metadata[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000054.png[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000054.snapshot[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000055.csv[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000056.metadata[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000056.png[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/civc73p3e857d/000056.snapshot[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/ckl0xd9cfaaua/00000e.csv[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/ckl0xd9cfaaua/000010.csv[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/ckl0xd9cfaaua/000011.metadata[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/ckl0xd9cfaaua/000011.png[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/ckl0xd9cfaaua/000011.snapshot[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/clcooak5kz7iw/00000b.metadata[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/clcooak5kz7iw/00000b.png[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/clcooak5kz7iw/00000b.snapshot[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/coap9djrid8eg/000019.csv[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/coap9djrid8eg/00001a.metadata[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/coap9djrid8eg/00001a.png[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/coap9djrid8eg/00001a.snapshot[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cql89x3eabfp6/000012.csv[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cql89x3eabfp6/000013.metadata[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cql89x3eabfp6/000013.png[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cql89x3eabfp6/000013.snapshot[m
+	[31mmodified:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/csetup_chunk/000002.csv[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cumv7n5g8rbxd/000023.csv[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cumv7n5g8rbxd/000024.metadata[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cumv7n5g8rbxd/000024.png[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cumv7n5g8rbxd/000024.snapshot[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cw12ulrdd4i37/000033.metadata[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cw12ulrdd4i37/000033.png[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cw12ulrdd4i37/000033.snapshot[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cydg5rmnajg5z/00004d.csv[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cydg5rmnajg5z/00004e.metadata[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cydg5rmnajg5z/00004e.rdf[m
+	[31mdeleted:    .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/cydg5rmnajg5z/00004f.csv[m
+	[31mmodified:   .Rproj.user/shared/notebooks/paths[m
+	[31mmodified:   Solo1.Rmd[m
+	[31mdeleted:    survey.txt[m
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	[31m.gitignore[m
+	[31mSurveyClusters.txt[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;~/Documents/Clusteringsrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ git add .

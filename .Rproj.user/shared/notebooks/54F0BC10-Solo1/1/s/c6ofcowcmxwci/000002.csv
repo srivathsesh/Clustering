@@ -1,2 +1,0 @@
-"0","set.seed(10)"
-"0","bt_sampples <- rsample::bootstraps(SurveyDataStd, times = 25)"
