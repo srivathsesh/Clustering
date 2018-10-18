@@ -115,7 +115,18 @@ SurveyData %<>%
   select(-starts_with('q2r')) %>% 
   select(-starts_with('q12')) %>% 
   select(-starts_with('q49')) %>% 
-  select(-q48,-q11,-q55,-q54)
+  select(-q48,-q11,-q55,-q54,-q1,-q57)
+
+SurveyData %<>%
+  mutate(TVApp = q4r2 + q4r4,
+         NewsApp = q4r7 + q4r9,
+         Music = q4r1,
+         Entertainment = q4r3,
+         Gaming = q4r5,
+         SocialNet = q4r6,
+         ShoppingApp = q4r8,
+         OtherApps = q4r10) %>% 
+  select(-starts_with('q4r'))
 
 # Remove CaseID and make it a rowname instead
 
@@ -212,7 +223,7 @@ library(cluster)
 library(factoextra)
 fviz_nbclust(SurveyDataStd,kmeans, method = "wss")
 
-kmClusters <- kmeans(SurveyDataStd,6)
+kmClusters <- kmeans(SurveyDataStd,3)
 
 fviz_cluster(kmClusters,SurveyDataStd,  geom = "point", 
              ellipse= F, show.clust.cent = F,
@@ -238,12 +249,12 @@ fviz_cluster(pamclust,
 
 ```{r}
 dbscan::kNNdistplot(SurveyDataStd, k =  6)
-abline(h = 4.5, lty = 2)
+abline(h = 4.0, lty = 2)
 ```
 
 ```{r}
 set.seed(123)
-db <- fpc::dbscan(SurveyDataStd, eps = 4.5, MinPts = 5)
+db <- fpc::dbscan(SurveyDataStd, eps = 4.0, MinPts = 5)
 # Plot DBSCAN results
 library("factoextra")
 fviz_cluster(db, data = SurveyDataStd, stand = FALSE,
@@ -276,9 +287,78 @@ fviz_cluster(db2, data = tsnedf, stand = FALSE,
 
 ```{r}
 fviz_nbclust(tsnedf, pam, method = "wss")
+```
+
+```{r}
 set.seed(10)
-pamclust <- pam(tsnedf,8)
-fviz_cluster(pamclust, 
+pamclust3 <- pam(tsnedf,3)
+fviz_cluster(pamclust3, 
+             palette = "jco", # color palette
+             ellipse = T,
+             #ellipse.type = "t", # Concentration ellipse
+             repel = F, # Avoid label overplotting (slow)
+             labelsize = 3,
+             ggtheme = theme_classic(),
+             stand = F
+             )
+
+pamclust4 <- pam(tsnedf,4)
+fviz_cluster(pamclust4, 
+             palette = "jco", # color palette
+             ellipse = T,
+             #ellipse.type = "t", # Concentration ellipse
+             repel = F, # Avoid label overplotting (slow)
+             labelsize = 3,
+             ggtheme = theme_classic(),
+             stand = F
+             )
+
+pamclust5 <- pam(tsnedf,5)
+fviz_cluster(pamclust5, 
+             palette = "jco", # color palette
+             ellipse = T,
+             #ellipse.type = "t", # Concentration ellipse
+             repel = F, # Avoid label overplotting (slow)
+             labelsize = 3,
+             ggtheme = theme_classic(),
+             stand = F
+             )
+
+pamclust6 <- pam(tsnedf,6)
+fviz_cluster(pamclust6, 
+             palette = "jco", # color palette
+             ellipse = T,
+             #ellipse.type = "t", # Concentration ellipse
+             repel = F, # Avoid label overplotting (slow)
+             labelsize = 3,
+             ggtheme = theme_classic(),
+             stand = F
+             )
+
+pamclust7 <- pam(tsnedf,7)
+fviz_cluster(pamclust7, 
+             palette = "jco", # color palette
+             ellipse = T,
+             #ellipse.type = "t", # Concentration ellipse
+             repel = F, # Avoid label overplotting (slow)
+             labelsize = 3,
+             ggtheme = theme_classic(),
+             stand = F
+             )
+
+pamclust8 <- pam(tsnedf,8)
+fviz_cluster(pamclust8, 
+             palette = "jco", # color palette
+             ellipse = T,
+             #ellipse.type = "t", # Concentration ellipse
+             repel = F, # Avoid label overplotting (slow)
+             labelsize = 3,
+             ggtheme = theme_classic(),
+             stand = F
+             )
+set.seed(10)
+pamclust9 <- pam(tsnedf,9)
+fviz_cluster(pamclust9, 
              palette = "jco", # color palette
              ellipse = T,
              #ellipse.type = "t", # Concentration ellipse
@@ -290,7 +370,7 @@ fviz_cluster(pamclust,
 ```
 
 ```{r}
-clusters <- pamclust$clustering
+clusters <- pamclust9$clustering
 
 # put it back into SurveyData
 SurveyData %<>%
@@ -315,5 +395,8 @@ dtree_fit <- train(Clusters ~., data = SurveyData, method = "rpart",
 
 mdlfit <- dtree_fit$finalModel
 
+mdlfit <- partykit::as.party(mdlfit)
+
+plot(mdlfit)
 ```
 

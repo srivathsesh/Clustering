@@ -525,3 +525,58 @@ usage: git add [<options>] [--] <pathspec>...
     --chmod <(+/-)x>      override the executable bit of the listed files
 
 ]0;~/Documents/Clusteringsrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ git add -a[KA
+]0;~/Documents/Clusteringsrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ got [K[K[Kit commit -m "Var[K[K[Kremoved age and tried several clsuter vi[K[K[Km[K model visualizat ion"
+[master 3ce5260] removed age and tried several clsuter model visualization
+ 5 files changed, 1935 insertions(+), 2 deletions(-)
+ create mode 100644 SurveyClusters.csv
+]0;~/Documents/Clusteringsrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ git push origin master
+git: 'credential-read-only' is not a git command. See 'git --help'.
+Counting objects: 14, done.
+Delta compression using up to 8 threads.
+Compressing objects:   8% (1/12)   Compressing objects:  16% (2/12)   Compressing objects:  25% (3/12)   Compressing objects:  33% (4/12)   Compressing objects:  41% (5/12)   Compressing objects:  50% (6/12)   Compressing objects:  58% (7/12)   Compressing objects:  66% (8/12)   Compressing objects:  75% (9/12)   Compressing objects:  83% (10/12)   Compressing objects:  91% (11/12)   Compressing objects: 100% (12/12)   Compressing objects: 100% (12/12), done.
+Writing objects:   7% (1/14)   Writing objects:  14% (2/14)   Writing objects:  21% (3/14)   Writing objects:  28% (4/14)   Writing objects:  35% (5/14)   Writing objects:  42% (6/14)   Writing objects:  50% (7/14)   Writing objects:  57% (8/14)   Writing objects:  64% (9/14)   Writing objects:  71% (10/14)   Writing objects:  78% (11/14)   Writing objects:  85% (12/14)   Writing objects:  92% (13/14)   Writing objects: 100% (14/14)   Writing objects: 100% (14/14), 28.66 KiB | 0 bytes/s, done.
+Total 14 (delta 6), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/6)   [Kremote: Resolving deltas:  16% (1/6)   [Kremote: Resolving deltas:  33% (2/6)   [Kremote: Resolving deltas:  50% (3/6)   [Kremote: Resolving deltas:  66% (4/6)   [Kremote: Resolving deltas:  83% (5/6)   [Kremote: Resolving deltas: 100% (6/6)   [Kremote: Resolving deltas: 100% (6/6), completed with 6 local objects.[K
+To https://github.com/srivathsesh/Clustering.git
+   db1f13b..3ce5260  master -> master
+]0;~/Documents/Clusteringsrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .Rproj.user/12327A33/console06/59BA42B7[m
+	[31mmodified:   .Rproj.user/12327A33/sources/prop/CE5C1FD3[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;~/Documents/Clusteringsrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ git [K[K[K[Kgit statuspush origin master
+git: 'credential-read-only' is not a git command. See 'git --help'.
+Everything up-to-date
+]0;~/Documents/Clusteringsrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ git push origin master[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kremote -v
+origin	https://github.com/srivathsesh/Clustering.git (fetch)
+origin	https://github.com/srivathsesh/Clustering.git (push)
+]0;~/Documents/Clusteringsrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ git stati[Kus
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .Rproj.user/12327A33/console06/59BA42B7[m
+	[31mmodified:   .Rproj.user/12327A33/sources/prop/CE5C1FD3[m
+	[31mmodified:   SurveyClusters.csv[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;~/Documents/Clusteringsrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	[31mmodified:   .Rproj.user/12327A33/console06/59BA42B7[m
+	[31mmodified:   .Rproj.user/12327A33/sources/prop/CE5C1FD3[m
+	[31mmodified:   .Rproj.user/shared/notebooks/54F0BC10-Solo1/1/s/chunks.json[m
+	[31mmodified:   Solo1.Rmd[m
+	[31mmodified:   SurveyClusters.csv[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;~/Documents/Clusteringsrivathsans-MacBook-Pro:Clustering srivathsanseshadri$ git add .
