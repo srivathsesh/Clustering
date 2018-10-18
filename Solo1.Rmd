@@ -125,8 +125,13 @@ SurveyData %<>%
          Gaming = q4r5,
          SocialNet = q4r6,
          ShoppingApp = q4r8,
-         OtherApps = q4r10) %>% 
-  select(-starts_with('q4r'))
+         OtherApps = q4r10,
+         Income = q56) %>% 
+  select(-starts_with('q4r'),-q56)
+
+# Test out attitudinal cluster
+
+SurveyData %<>% select(ends_with('Mean'),Income,caseID) 
 
 # Remove CaseID and make it a rowname instead
 
@@ -191,7 +196,7 @@ library(rsample)
 # used first few samples' dendrogram to decide on the cut height to be 10
 hierCluster <- function(sampleSplit){
   hc <- hclust(dist(analysis(sampleSplit)))
-  cutree(hc,h=11)
+  cutree(hc,h=10)
 }
 
 bt_sampples %<>%
@@ -208,7 +213,7 @@ hist(map_dbl(bt_sampples$HC,max),
 ```{r}
 library(cluster)
 hc <- hclust(dist(SurveyDataStd))
-hClusters <- cutree(hc,k = 4)
+hClusters <- cutree(hc,k = 3)
 
 plot(cluster::silhouette(hClusters,daisy(SurveyDataStd)))
 ```
@@ -234,7 +239,7 @@ fviz_cluster(kmClusters,SurveyDataStd,  geom = "point",
 
 ```{r}
 fviz_nbclust(SurveyDataStd, pam, method = "wss")
-pamclust <- pam(SurveyDataStd,5)
+pamclust <- pam(SurveyDataStd,3)
 fviz_cluster(pamclust, 
              palette = "jco", # color palette
              ellipse = F,
@@ -249,12 +254,12 @@ fviz_cluster(pamclust,
 
 ```{r}
 dbscan::kNNdistplot(SurveyDataStd, k =  6)
-abline(h = 4.0, lty = 2)
+abline(h = 2.0, lty = 2)
 ```
 
 ```{r}
 set.seed(123)
-db <- fpc::dbscan(SurveyDataStd, eps = 4.0, MinPts = 5)
+db <- fpc::dbscan(SurveyDataStd, eps = 2.0, MinPts = 5)
 # Plot DBSCAN results
 library("factoextra")
 fviz_cluster(db, data = SurveyDataStd, stand = FALSE,
@@ -266,7 +271,8 @@ fviz_cluster(db, data = SurveyDataStd, stand = FALSE,
 
 ```{r}
 library(Rtsne)
-tsne <- Rtsne::Rtsne(SurveyDataStd,dims = 2, perplexity=30, verbose=TRUE, max_iter = 500,pca_center = F)
+rownames(SurveyDataStd) <- rownames(SurveyData)
+tsne <- Rtsne::Rtsne(distinct(SurveyDataStd),dims = 2, perplexity=30, verbose=TRUE, max_iter = 500,pca_center = F)
 
 dbscan::kNNdistplot(tsne$Y, k =  6)
 abline(h = 1.5, lty = 2)
@@ -370,12 +376,16 @@ fviz_cluster(pamclust9,
 ```
 
 ```{r}
-clusters <- pamclust9$clustering
+clusters <- pamclust3$clustering
 
 # put it back into SurveyData
 SurveyData %<>%
+  mutate(rowname = row.names(.)) %>% 
+  filter(!rowname %in% c("1083","1870","2223","655","998")) %>% 
   mutate(Clusters = clusters)
-rownames(SurveyData) <- rownames(SurveyData_copy)
+rownames(SurveyData) <- SurveyData$rowname
+SurveyData %<>% select(-rowname) 
+#rownames(SurveyData) <- rownames(SurveyData_copy)
 # write to file
 
 write.csv(SurveyData,file = 'SurveyClusters.csv')
