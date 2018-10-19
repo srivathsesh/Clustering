@@ -1,12 +1,17 @@
 ---
-title: "Market Segmentation"
+title: "Market Segmentation and Product recommendation"
 author: "Sri Seshadri"
 date: "10/13/2018"
-output: pdf_document
+output: 
+pdf_document:
+  toc: true
+  toc_depth: 3
+  fig_caption: yes
+  
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE, warning = F, message = F)
 load("apphappyData.RData")
 library(dplyr)
 library(magrittr)
@@ -14,11 +19,15 @@ library(caret)
 library(purrr)
 ```
 
-## Introduction
+## 1. Introduction
 
-## Executive Summary
+The App Happy company is currently in the business of providing B2B analytic apps. It is wanting to diversity its product portfolio and is exploring entering new market in the entertainment space. In order to make an informed decision on new market entry, the company surveyed the consumers using a third party surveyor (Consumer Spy Corp). This report discusses the analysis of the survey to explore the segments of customers in the market. The analysis also explores the products in the market based on the survey and touches on potential opportunities for product differentiation. The analysis also explores possible marketing strategy to reach the various segments of the market. However market sizing and market growth rate is out of scope of this analysis. The report discusses the analytical techniques used to segment the markets and use of typing tools to classify new customers on whom there is no existent data. The report also discusses further research to improve the accuracy of typing tools.
 
-## Data
+## 2. Executive Summary
+
+## 3. Data
+
+The survey conducted by Consumer Spy Corp was extensive, however not all question's responses was shared with us. We had access to responses to questions covering the topics of a) demography such as age, race, education, income, sex and marital status etc. b) Tpe of web-enabled devices and the type of apps the consumers use c) Attitude of customers towards new technology, products and personality. Responses to 16 questions were shared with us. The attitudinal questions solicited response in Likert scale. There were 5.5% and 1.33% missing responses for questions on percentage of your apps that were free and gender respectively. Missing data was imputed for analysis.
 
 ```{r}
 
@@ -28,18 +37,9 @@ Summary <- skimr::skim(SurveyData)
 ```
 
 
-## Exploratory Data Analysis
+## 4. Feature Engineering
 
-```{r}
-SurveyData %<>% select(-q5r1,-q2r10)
-cormat <- cor(SurveyData,use = "complete.obs")
-corrplot::corrplot(cormat,tl.cex = 0.6)
-```
-
-## Grouping Questions by Type
-
-Question 24 can be grouped into two sections - Consumer Attitude and Technology Use
-
+The questions and responses surrounding the attitudes of customers were lumped together using the KJ method or affinity diagram, based on common themes. The engineered features and the formula are shown in the table below. The Survey is previded in the Appendix for reference. It is to be noted that the 6th statement in question 25 has a negative conotation compared to the other statements in the question. Hence the score of statement is given an negative weightage, as seen in the last row of table 1.
 
 ```{r}
 TechAttitude <- paste0("q24r",c(1,2,4,5,6))
@@ -47,8 +47,35 @@ TechUseSocial <- paste0("q24r",c(9,10,11,12))
 TechUseMusic <- paste0("q24r",c(7))
 TechUseVideo <- paste0("q24r",c(8))
 
-ShoppingAttitude <- paste0("q26r",c(3,4,5,6,18,7,13,14,15,16))
+ShoppingAttitude <- c(paste0("q26r",c(3,4,5,6,18,7,13,14,15,16)),"q24r3")
 AppPref <- paste0("q24r",c(8,9,10,11,12))
+
+TechAttitudeFormula <- paste0('mean(',paste(TechAttitude,collapse = ","),')')
+TechUseSocialFormula <- paste0('mean(',paste(TechUseSocial,collapse = ","),')')
+TechUseMusicFormula <- paste0('mean(',paste(TechUseSocial,collapse = ","),')')
+TechUseVideoFormula <- paste0('mean(',paste(TechUseVideo,collapse = ","),')')
+ShoppingAttitudeFormula <- paste0('mean(',paste(ShoppingAttitude,collapse = ","),')')
+AppPrefFormula <- paste0('mean(',paste(AppPref,collapse = ","),')')
+
+LeaderFormula <- paste0('(',paste0('q25r',paste0(c(1,2,3,4,5,7,8,9,10,11,12)),collapse = "+"),'-q25r6)/12')
+
+EngineeredFeature <- c('TechAttitudeMean','TechUseSocialMean','TechUseMusiclMean','TechUseVideoMean','ShoppingAttitudeMean','AppPrefMean','LeaderMean')
+Formula <- c(TechAttitudeFormula,TechUseSocialFormula,TechUseMusicFormula,TechUseVideoFormula,ShoppingAttitudeFormula,AppPrefFormula,LeaderFormula)
+
+knitr::kable(data.frame(Feature = EngineeredFeature, Formula = Formula), caption = "Feature engineering")
+
+```
+
+
+```{r,eval = F}
+SurveyData %<>% select(-q5r1,-q2r10)
+cormat <- cor(SurveyData,use = "complete.obs")
+corrplot::corrplot(cormat,tl.cex = 0.6)
+```
+
+
+```{r}
+
 
 
 
@@ -157,6 +184,16 @@ rownames(SurveyData) <- SurveyData$caseID
   SurveyData0 %<>% select(-caseID)
   
 ```
+
+# 5. Feature Selection & Assumptions
+
+With ubiquitous use of technology in today's world, the use of web-enabled devices is in every age group, race and gender. The question now becomes 
+- what are the consumers consuming on their devices? 
+- Where is room for opportunities in terms of a new product? 
+- What is/are the attitude(s) of the customers towards new content consumption? 
+
+
+
 
 ```{r}
 cormat <- cor(SurveyData,use = "complete.obs")
@@ -407,7 +444,7 @@ fviz_cluster(pamclust3,
              )
 
 pamclust4 <- pam(tsnedf,4)
-fviz_cluster(pamclust4, 
+fviz_cluster(pamclust4,
              palette = "jco", # color palette
              ellipse = T,
              #ellipse.type = "t", # Concentration ellipse
@@ -416,50 +453,50 @@ fviz_cluster(pamclust4,
              ggtheme = theme_classic(),
              stand = F
              )
-
-pamclust5 <- pam(tsnedf,5)
-fviz_cluster(pamclust5, 
-             palette = "jco", # color palette
-             ellipse = T,
-             #ellipse.type = "t", # Concentration ellipse
-             repel = F, # Avoid label overplotting (slow)
-             labelsize = 3,
-             ggtheme = theme_classic(),
-             stand = F
-             )
-
-pamclust6 <- pam(tsnedf,6)
-fviz_cluster(pamclust6, 
-             palette = "jco", # color palette
-             ellipse = T,
-             #ellipse.type = "t", # Concentration ellipse
-             repel = F, # Avoid label overplotting (slow)
-             labelsize = 3,
-             ggtheme = theme_classic(),
-             stand = F
-             )
-
-pamclust7 <- pam(tsnedf,7)
-fviz_cluster(pamclust7, 
-             palette = "jco", # color palette
-             ellipse = T,
-             #ellipse.type = "t", # Concentration ellipse
-             repel = F, # Avoid label overplotting (slow)
-             labelsize = 3,
-             ggtheme = theme_classic(),
-             stand = F
-             )
-
-pamclust8 <- pam(tsnedf,8)
-fviz_cluster(pamclust8, 
-             palette = "jco", # color palette
-             ellipse = T,
-             #ellipse.type = "t", # Concentration ellipse
-             repel = F, # Avoid label overplotting (slow)
-             labelsize = 3,
-             ggtheme = theme_classic(),
-             stand = F
-             )
+# 
+# pamclust5 <- pam(tsnedf,5)
+# fviz_cluster(pamclust5, 
+#              palette = "jco", # color palette
+#              ellipse = T,
+#              #ellipse.type = "t", # Concentration ellipse
+#              repel = F, # Avoid label overplotting (slow)
+#              labelsize = 3,
+#              ggtheme = theme_classic(),
+#              stand = F
+#              )
+# 
+# pamclust6 <- pam(tsnedf,6)
+# fviz_cluster(pamclust6, 
+#              palette = "jco", # color palette
+#              ellipse = T,
+#              #ellipse.type = "t", # Concentration ellipse
+#              repel = F, # Avoid label overplotting (slow)
+#              labelsize = 3,
+#              ggtheme = theme_classic(),
+#              stand = F
+#              )
+# 
+# pamclust7 <- pam(tsnedf,7)
+# fviz_cluster(pamclust7, 
+#              palette = "jco", # color palette
+#              ellipse = T,
+#              #ellipse.type = "t", # Concentration ellipse
+#              repel = F, # Avoid label overplotting (slow)
+#              labelsize = 3,
+#              ggtheme = theme_classic(),
+#              stand = F
+#              )
+# 
+# pamclust8 <- pam(tsnedf,8)
+# fviz_cluster(pamclust8, 
+#              palette = "jco", # color palette
+#              ellipse = T,
+#              #ellipse.type = "t", # Concentration ellipse
+#              repel = F, # Avoid label overplotting (slow)
+#              labelsize = 3,
+#              ggtheme = theme_classic(),
+#              stand = F
+#              )
 set.seed(10)
 pamclust09 <- pam(tsnedf0,9)
 fviz_cluster(pamclust09, 
@@ -486,7 +523,7 @@ SurveyData %<>% select(-rowname)
 #rownames(SurveyData) <- rownames(SurveyData_copy)
 # write to file
 
-write.csv(SurveyData,file = 'SurveyClusters.csv')
+#write.csv(SurveyData,file = 'SurveyClusters.csv')
 
 
 
