@@ -117,6 +117,21 @@ SurveyData %<>%
   select(-starts_with('q49')) %>% 
   select(-q48,-q11,-q55,-q54,-q1,-q57)
 
+# Data to show the cluster by exisitng market
+
+SurveyData0 <- SurveyData %>%
+  mutate(TVApp = q4r2 + q4r4,
+         NewsApp = q4r7 + q4r9,
+         Music = q4r1,
+         Entertainment = q4r3,
+         Gaming = q4r5,
+         SocialNet = q4r6,
+         ShoppingApp = q4r8,
+         OtherApps = q4r10) %>% 
+  select(-starts_with('q4r'))
+
+# Data to show the attitudinal cluster
+
 SurveyData %<>%
   mutate(TVApp = q4r2 + q4r4,
          NewsApp = q4r7 + q4r9,
@@ -133,11 +148,14 @@ SurveyData %<>%
 
 SurveyData %<>% select(ends_with('Mean'),Income,caseID) 
 
+
 # Remove CaseID and make it a rowname instead
 
  # `rownames<-`(SurveyData,SurveyData$caseID)
 rownames(SurveyData) <- SurveyData$caseID
   SurveyData %<>% select(-caseID) 
+  SurveyData0 %<>% select(-caseID)
+  
 ```
 
 ```{r}
@@ -152,6 +170,10 @@ corrplot::corrplot.mixed(cormat,tl.cex = 0.6,addCoefasPercent = T,number.cex=0.6
 RedundantInfo <- colnames(cormat)[caret::findCorrelation(cormat)]
 SurveyData %<>% 
   select(-AppPrefMean)
+
+# Based on previous analysis
+SurveyData0 %<>% 
+  select(-AppPrefMean)
 ```
 
 # Impute missing data
@@ -163,6 +185,15 @@ SurveyData_copy <- mice::complete(imputedData)
 rownames(SurveyData_copy) <- rownames(SurveyData)
 SurveyData <- SurveyData_copy
 rownames(SurveyData) <- rownames(SurveyData_copy)
+
+
+imputedData0 <- mice::mice(SurveyData0,printFlag = F)
+SurveyData_copy0 <- mice::complete(imputedData0)
+rownames(SurveyData_copy0) <- rownames(SurveyData0)
+SurveyData0 <- SurveyData_copy0
+rownames(SurveyData0) <- rownames(SurveyData_copy0)
+
+
 ```
 
 # Center and Standardize
@@ -178,6 +209,14 @@ SurveyDataPrep <- prep(rec,training = SurveyData, retain = T)
 #SurveyDataStd <- bake(SurveyDataPrep, newdata = SurveyData)
 SurveyDataStd <- juice(SurveyDataPrep)
 
+rec0 <- recipe(SurveyData0) %>% 
+  step_center(everything()) %>% 
+  step_scale(everything())
+
+
+SurveyDataPrep0 <- prep(rec0,training = SurveyData0, retain = T)
+#SurveyDataStd <- bake(SurveyDataPrep, newdata = SurveyData)
+SurveyDataStd0 <- juice(SurveyDataPrep0)
 
 ```
 
@@ -186,6 +225,7 @@ SurveyDataStd <- juice(SurveyDataPrep)
 ```{r}
 set.seed(10)
 bt_sampples <- rsample::bootstraps(SurveyDataStd, times = 25)
+
 ```
 
 # Hierarchical cluster
@@ -215,7 +255,13 @@ library(cluster)
 hc <- hclust(dist(SurveyDataStd))
 hClusters <- cutree(hc,k = 3)
 
+
+hc0 <- hclust(dist(SurveyDataStd0))
+hClusters0 <- cutree(hc0,k = 4)
+
 plot(cluster::silhouette(hClusters,daisy(SurveyDataStd)))
+
+plot(cluster::silhouette(hClusters0,daisy(SurveyDataStd0)))
 ```
 
 # R-Square stats for Hieracrchical
@@ -233,6 +279,15 @@ kmClusters <- kmeans(SurveyDataStd,3)
 fviz_cluster(kmClusters,SurveyDataStd,  geom = "point", 
              ellipse= F, show.clust.cent = F,
              palette = "jco", ggtheme = theme_classic())
+
+
+fviz_nbclust(SurveyDataStd0,kmeans, method = "wss")
+
+kmClusters0 <- kmeans(SurveyDataStd0,3)
+
+fviz_cluster(kmClusters0,SurveyDataStd0,  geom = "point", 
+             ellipse= F, show.clust.cent = F,
+             palette = "jco", ggtheme = theme_classic())
 ```
 
 # pam
@@ -248,6 +303,18 @@ fviz_cluster(pamclust,
              labelsize = 3,
              ggtheme = theme_classic()
              )
+
+
+fviz_nbclust(SurveyDataStd0, pam, method = "wss")
+pamclust0 <- pam(SurveyDataStd,5)
+fviz_cluster(pamclust0, 
+             palette = "jco", # color palette
+             ellipse = F,
+             #ellipse.type = "t", # Concentration ellipse
+             repel = F, # Avoid label overplotting (slow)
+             labelsize = 3,
+             ggtheme = theme_classic()
+             )
 ```
 
 # dbscan
@@ -255,6 +322,9 @@ fviz_cluster(pamclust,
 ```{r}
 dbscan::kNNdistplot(SurveyDataStd, k =  6)
 abline(h = 2.0, lty = 2)
+
+dbscan::kNNdistplot(SurveyDataStd0, k =  6)
+abline(h = 4.0, lty = 2)
 ```
 
 ```{r}
@@ -263,6 +333,14 @@ db <- fpc::dbscan(SurveyDataStd, eps = 2.0, MinPts = 5)
 # Plot DBSCAN results
 library("factoextra")
 fviz_cluster(db, data = SurveyDataStd, stand = FALSE,
+             ellipse = FALSE, show.clust.cent = FALSE,
+             geom = "point",palette = "jco", ggtheme = theme_classic())
+
+
+db0 <- fpc::dbscan(SurveyDataStd0, eps = 4.0, MinPts = 5)
+# Plot DBSCAN results
+library("factoextra")
+fviz_cluster(db0, data = SurveyDataStd, stand = FALSE,
              ellipse = FALSE, show.clust.cent = FALSE,
              geom = "point",palette = "jco", ggtheme = theme_classic())
 ```
@@ -275,6 +353,12 @@ rownames(SurveyDataStd) <- rownames(SurveyData)
 tsne <- Rtsne::Rtsne(distinct(SurveyDataStd),dims = 2, perplexity=30, verbose=TRUE, max_iter = 500,pca_center = F)
 
 dbscan::kNNdistplot(tsne$Y, k =  6)
+abline(h = 1.5, lty = 2)
+
+
+tsne0 <- Rtsne::Rtsne(SurveyDataStd0,dims = 2, perplexity=30, verbose=TRUE, max_iter = 500,pca_center = F)
+
+dbscan::kNNdistplot(tsne0$Y, k =  6)
 abline(h = 1.5, lty = 2)
 ```
 
@@ -289,10 +373,24 @@ fviz_cluster(db2, data = tsnedf, stand = FALSE,
              ellipse = FALSE, show.clust.cent = FALSE,
              geom = "point", ggtheme = theme_classic(),
              palette = 'fco')
+
+
+db20 <- fpc::dbscan(tsne0$Y, eps = 1.5, MinPts = 3)
+
+# Plot DBSCAN results
+library("factoextra")
+tsnedf0 <- tsne0$Y
+colnames(tsnedf0) <- c('Dim1','Dim2')
+fviz_cluster(db20, data = tsnedf0, stand = FALSE,
+             ellipse = FALSE, show.clust.cent = FALSE,
+             geom = "point", ggtheme = theme_classic(),
+             palette = 'fco')
 ```
 
 ```{r}
 fviz_nbclust(tsnedf, pam, method = "wss")
+
+fviz_nbclust(tsnedf0, pam, method = "wss")
 ```
 
 ```{r}
@@ -363,8 +461,8 @@ fviz_cluster(pamclust8,
              stand = F
              )
 set.seed(10)
-pamclust9 <- pam(tsnedf,9)
-fviz_cluster(pamclust9, 
+pamclust09 <- pam(tsnedf0,9)
+fviz_cluster(pamclust09, 
              palette = "jco", # color palette
              ellipse = T,
              #ellipse.type = "t", # Concentration ellipse
@@ -389,6 +487,15 @@ SurveyData %<>% select(-rowname)
 # write to file
 
 write.csv(SurveyData,file = 'SurveyClusters.csv')
+
+
+
+clusters0 <- pamclust09$clustering
+
+# put it back into SurveyData
+SurveyData0 %<>%
+  mutate(Clusters = clusters0)
+rownames(SurveyData0) <- rownames(SurveyData_copy0)
 ```
 
 # Random Forest
@@ -408,5 +515,22 @@ mdlfit <- dtree_fit$finalModel
 mdlfit <- partykit::as.party(mdlfit)
 
 plot(mdlfit)
+
+
+
+# Change Clusters into a factor
+SurveyData0$Clusters <- as.factor(SurveyData0$Clusters)
+
+# Train a classification tree
+trctrl <- trainControl(method = "repeatedcv", number = 10, repeats = 3)
+dtree_fit0 <- train(Clusters ~., data = SurveyData0, method = "rpart",
+                   trControl = trctrl,
+                   tuneLength = 10)
+
+mdlfit0 <- dtree_fit0$finalModel
+
+mdlfit0 <- partykit::as.party(mdlfit0)
+
+plot(mdlfit0)
 ```
 
