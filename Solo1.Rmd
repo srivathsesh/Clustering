@@ -591,7 +591,7 @@ Before suggesting a potential product for AppHappy, it would be useful to study 
 ClassDesc <- c("Busy,Upper middle class shopper", "Middle income,late adopter,social media user", "Above average income late adopter, web video consumer", "Non social late adopter")
 Samples <- paste0(round(c(530,429,435,401)/sum(c(530,429,435,401))*100,1),"%")
 ClusterID <- c(4,1,2,3)
-WayToReach <- c('Internet Radio','Ad spaces on social media video page', 'Ad spaces on social media video page',"Unknown")
+WayToReach <- c('Internet Radio ads, webpage ads','Ad spaces on social media video page', 'Ad spaces on social media video page',"Unknown")
 
 pander::pander(data.frame(Segment = ClassDesc, Percent_Surveyee = Samples, MarketingStrategy = WayToReach, ClusterID = ClusterID), caption = "Market Segmentation Summary")
 ```
@@ -689,4 +689,15 @@ table(test2$ClustersID,test2$ClustersID0)
 
 # 7. Product Recommendation
 
+The "Other App" in total numbers is less and happens to be used by non-music app users or music and gaming app users. So this opens up a door for AppHappy to enter the market in the other App category that is in line with its core competency - Analytics. 
+
+One such product would be finance planning for consumers with aggressive shopping attitude and leadership ability(segment / cluster ID 4 in section 6.2 above). The reason being the upper middle class are likely to want to shop  and at the same time save money for retirement. An App that gives intelligence to consumers on their likelyhood of expenditure surpassing the budget and potential actions to curb expenditure may be a good start. 
+
+# 8. Typing tools
+
+In Section 6, a random forest model was used as supervised learning method to aid profiling of the segments. A 10 fold cross validated model accuracy was above 80%. The very same model can be used as a decision tree for classifying new customers. Descriptively, our target customers are above average earners, who are leaders with a busy life style and aggressive shoppers. 
+
+# 9. Product suggestion, target customers and Marketing strategy - Conclusion
+
+After market segmentation and studying the Apps being used by consumers in the market, it is recommended that AppHappy enter the market with a financial analytics app in line with its core competencies. An App that curbs too much spending behaviour and helps foster investment. The target customers are are above average earners, who are leaders with a busy life style and aggressive shoppers. The consumers in this segment frequently visit internet radio websites. Either reaching them through radio ads or ads on internet radio webpages could be useful.
 
