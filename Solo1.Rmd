@@ -1,12 +1,12 @@
 ---
-title: "Market Segmentation and Product recommendation"
+title: "Market Segmentation and Product recommendation for AppHappy"
 author: "Sri Seshadri"
 date: "10/13/2018"
 output: 
-pdf_document:
-  toc: true
-  toc_depth: 3
-  fig_caption: yes
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    fig_caption: yes
   
 ---
 
@@ -17,15 +17,16 @@ library(dplyr)
 library(magrittr)
 library(caret)
 library(purrr)
+library(factoextra)
 ```
 
-## 1. Introduction
+# 1. Introduction
 
 The App Happy company is currently in the business of providing B2B analytic apps. It is wanting to diversity its product portfolio and is exploring entering new market in the entertainment space. In order to make an informed decision on new market entry, the company surveyed the consumers using a third party surveyor (Consumer Spy Corp). This report discusses the analysis of the survey to explore the segments of customers in the market. The analysis also explores the products in the market based on the survey and touches on potential opportunities for product differentiation. The analysis also explores possible marketing strategy to reach the various segments of the market. However market sizing and market growth rate is out of scope of this analysis. The report discusses the analytical techniques used to segment the markets and use of typing tools to classify new customers on whom there is no existent data. The report also discusses further research to improve the accuracy of typing tools.
 
-## 2. Executive Summary
+# 2. Executive Summary
 
-## 3. Data
+# 3. Data
 
 The survey conducted by Consumer Spy Corp was extensive, however not all question's responses was shared with us. We had access to responses to questions covering the topics of a) demography such as age, race, education, income, sex and marital status etc. b) Tpe of web-enabled devices and the type of apps the consumers use c) Attitude of customers towards new technology, products and personality. Responses to 16 questions were shared with us. The attitudinal questions solicited response in Likert scale. There were 5.5% and 1.33% missing responses for questions on percentage of your apps that were free and gender respectively. Missing data was imputed for analysis.
 
@@ -37,7 +38,7 @@ Summary <- skimr::skim(SurveyData)
 ```
 
 
-## 4. Feature Engineering
+# 4. Feature Engineering
 
 The questions and responses surrounding the attitudes of customers were lumped together using the KJ method or affinity diagram, based on common themes. The engineered features and the formula are shown in the table below. The Survey is previded in the Appendix for reference. It is to be noted that the 6th statement in question 25 has a negative conotation compared to the other statements in the question. Hence the score of statement is given an negative weightage, as seen in the last row of table 1.
 
@@ -187,15 +188,18 @@ rownames(SurveyData) <- SurveyData$caseID
 
 # 5. Feature Selection & Assumptions
 
-With ubiquitous use of technology in today's world, the use of web-enabled devices is in every age group, race and gender. The question now becomes 
-- what are the consumers consuming on their devices? 
+Looking ahead, the use of technology transcends age, gender and race. The effect of the three demographics are likely to be diminished in the future. For example, there are gaming app to entertain a 5 year old and a 50 year old. It was evident from the analysis of the data that these demographics weres not a dominant factor in the segmentation of the markets. To reduce the noise in the segmentation, the demographics features were eleminated from the data. The responses to questions on the kind of apps the surveyee uses, the frequency of various website visits, the attitudinal questions and income were used for this analysis.
+
+It is assumed that frequency of websites visits is likely due to consumer not liking the experience of an app on their devices or they spend more time on their computer. With the features selected the following questions are sought to be answered.
+
+- what are the consumers consuming on their devices?
 - Where is room for opportunities in terms of a new product? 
 - What is/are the attitude(s) of the customers towards new content consumption? 
 
 
+The feature selection was further refined by correlation filtering methods. It was found that the AppPrefMean (App preference mean) does not add new information to the data due its correlation with other variables.Hene was removed. Figure 1 shows the correlation matrix.
 
-
-```{r}
+```{r,fig.height=4,fig.cap="Correlation plot"}
 cormat <- cor(SurveyData,use = "complete.obs")
 corrplot::corrplot.mixed(cormat,tl.cex = 0.6,addCoefasPercent = T,number.cex=0.6)
 
@@ -213,7 +217,7 @@ SurveyData0 %<>%
   select(-AppPrefMean)
 ```
 
-# Impute missing data
+
 
 ```{r,message=F}
 
@@ -233,7 +237,25 @@ rownames(SurveyData0) <- rownames(SurveyData_copy0)
 
 ```
 
-# Center and Standardize
+## 5.1 Data Preparation
+
+The data was standardized and centered to ensure the features were in the same scale for the eucleadian distances calculations for clustering algorithms. Also based on preliminary analysis, the variation in the response to the question "Do you use any of the following kind of Apps?" (Question 4) overwhelmed the information contribution from other selected features. Hence the data was split into two
+
+1. Data with responses to question 4 removed - Used for attitudinal segmentation and prooduct offering opportunities
+2. Data with all selected features - Used for segmenting customers based on use of apps in the market.
+
+# 6. Market Segmentation Analysis
+
+In this section the analytical techniques used for market segmentation is discussed and the results are interpreted and recommendations to AppHappy are made regarding product offereing and required further study.
+
+## 6.1 Attitudinal Segmentation
+
+### 6.1.1 Hierarchical clustering
+
+Hierarchical clustering is used to determine the inherent structure in the data and used to get a sense on number of segments in the market. 25 bootstrap samples are drawn and dendrograms are cut at height 10 for each of the samples. The height to cut the dendrogram was based on sampled dendrogram. Also the The number of clusters were evaluated based on within sum of squares (WSS) by number of cluster. 
+
+As shown in figure 2, a three cluster solution is a good starting point for segmentation.
+
 
 ```{r}
 library(recipes)
@@ -257,7 +279,6 @@ SurveyDataStd0 <- juice(SurveyDataPrep0)
 
 ```
 
-# Get bootstrap samples
 
 ```{r}
 set.seed(10)
@@ -265,9 +286,8 @@ bt_sampples <- rsample::bootstraps(SurveyDataStd, times = 25)
 
 ```
 
-# Hierarchical cluster
 
-```{r}
+```{r,fig.cap='Number of Clusters - Hierarchical'}
 library(rsample)
 
 # used first few samples' dendrogram to decide on the cut height to be 10
@@ -279,15 +299,18 @@ hierCluster <- function(sampleSplit){
 bt_sampples %<>%
   mutate(HC = map(splits,hierCluster))
 
+
 hist(map_dbl(bt_sampples$HC,max),
-     main = 'Clusters in the 25 bootstrap samples',col = 'red',
+     main = 'Clusters in the 25 bootstrap samples - cut height 10',col = 'red',
      xlab = 'Number of Clusters')
+
+fviz_nbclust(SurveyDataStd,hcut, method = "wss",main = "Optimal number of clusters - WSS")
 
 ```
 
-# Applying 4 cluster solution to the hierarchical clusters
+The Hierarchical clustering technique however lumps 92% of the consumers into cluster 1. This is evident in the Sihouette plot shown in figure 3. 
 
-```{r}
+```{r,fig.cap = "Cluster purity and samples - Hierarchical clustering", fig.height=4}
 library(cluster)
 hc <- hclust(dist(SurveyDataStd))
 hClusters <- cutree(hc,k = 3)
@@ -296,164 +319,185 @@ hClusters <- cutree(hc,k = 3)
 hc0 <- hclust(dist(SurveyDataStd0))
 hClusters0 <- cutree(hc0,k = 4)
 
-plot(cluster::silhouette(hClusters,daisy(SurveyDataStd)))
+plot(cluster::silhouette(hClusters,daisy(SurveyDataStd)),main = "Silhoutte plot -Hierarchical clusters")
 
-plot(cluster::silhouette(hClusters0,daisy(SurveyDataStd0)))
+#plot(cluster::silhouette(hClusters0,daisy(SurveyDataStd0)))
 ```
 
-# R-Square stats for Hieracrchical
 
 
-# K-mean Clustering
 
-```{r}
+### 6.1.2 K-means 
+
+We attempt the K mean clusering with gap statistics to determine the number o clusters to see if it agrees with the observation in the hierarchical clustering techniques.As shown in figure 4, the clusters seem to be a single blob with various densities.
+
+```{r,fig.cap = "K means clusters", fig.width=4, fig.height=3}
 library(cluster)
 library(factoextra)
-fviz_nbclust(SurveyDataStd,kmeans, method = "wss")
+
+knclust<- fviz_nbclust(SurveyDataStd,kmeans, method = "gap_stat")
 
 kmClusters <- kmeans(SurveyDataStd,3)
 
-fviz_cluster(kmClusters,SurveyDataStd,  geom = "point", 
+kmp <- fviz_cluster(kmClusters,SurveyDataStd,  geom = "point", 
              ellipse= F, show.clust.cent = F,
-             palette = "jco", ggtheme = theme_classic())
+             palette = "jco", ggtheme = theme_classic(),
+             main = "K - means with 3 clusters")
 
+gridExtra::grid.arrange(knclust,kmp,ncol = 2)
 
-fviz_nbclust(SurveyDataStd0,kmeans, method = "wss")
-
-kmClusters0 <- kmeans(SurveyDataStd0,3)
-
-fviz_cluster(kmClusters0,SurveyDataStd0,  geom = "point", 
-             ellipse= F, show.clust.cent = F,
-             palette = "jco", ggtheme = theme_classic())
+# fviz_nbclust(SurveyDataStd0,kmeans, method = "gap_stat")
+# 
+# kmClusters0 <- kmeans(SurveyDataStd0,3)
+# 
+# fviz_cluster(kmClusters0,SurveyDataStd0,  geom = "point", 
+#              ellipse= F, show.clust.cent = F,
+#              palette = "jco", ggtheme = theme_classic())
 ```
 
-# pam
+### 6.1.3 Partition About Mediods (PAM)
 
-```{r}
-fviz_nbclust(SurveyDataStd, pam, method = "wss")
+We try if there are inherent clusters using the PAM method. Likewise there is a blob of clusters with varying density. We employ the Within Sum Squares metric to assess number of clusters to improve speed of computation for PAM.
+
+```{r,fig.cap = "PAM clusters",fig.width=4, fig.height=3}
+
+nPamclust <- fviz_nbclust(SurveyDataStd, pam, method = "wss")
 pamclust <- pam(SurveyDataStd,3)
-fviz_cluster(pamclust, 
+pamclustP <- fviz_cluster(pamclust, 
              palette = "jco", # color palette
              ellipse = F,
              #ellipse.type = "t", # Concentration ellipse
              repel = F, # Avoid label overplotting (slow)
              labelsize = 3,
-             ggtheme = theme_classic()
+             ggtheme = theme_classic(),
+             main = 'Clusters - PAM'
              )
 
+gridExtra::grid.arrange(nPamclust,pamclustP,ncol = 2)
 
-fviz_nbclust(SurveyDataStd0, pam, method = "wss")
-pamclust0 <- pam(SurveyDataStd,5)
-fviz_cluster(pamclust0, 
-             palette = "jco", # color palette
-             ellipse = F,
-             #ellipse.type = "t", # Concentration ellipse
-             repel = F, # Avoid label overplotting (slow)
-             labelsize = 3,
-             ggtheme = theme_classic()
-             )
+# fviz_nbclust(SurveyDataStd0, pam, method = "wss")
+# pamclust0 <- pam(SurveyDataStd,5)
+# fviz_cluster(pamclust0, 
+#              palette = "jco", # color palette
+#              ellipse = F,
+#              #ellipse.type = "t", # Concentration ellipse
+#              repel = F, # Avoid label overplotting (slow)
+#              labelsize = 3,
+#              ggtheme = theme_classic()
+#              )
 ```
 
-# dbscan
+### 6.1.4 DBSCAN
 
-```{r}
-dbscan::kNNdistplot(SurveyDataStd, k =  6)
-abline(h = 2.0, lty = 2)
+The varying densities lead us to attempt Density based clustering technique to see if there are inherent patterns in the data. Here too we are left with a single blob.
 
-dbscan::kNNdistplot(SurveyDataStd0, k =  6)
-abline(h = 4.0, lty = 2)
+```{r,fig.cap = "Choice of eps for DBScan" }
+dbploteps  <-dbscan::kNNdistplot(SurveyDataStd, k =  6)
+dbploteps <- abline(h = 2.0, lty = 2)
+
+# dbscan::kNNdistplot(SurveyDataStd0, k =  6)
+# abline(h = 4.0, lty = 2)
 ```
 
-```{r}
+```{r, fig.cap = "DBSCAN Clustering"}
 set.seed(123)
 db <- fpc::dbscan(SurveyDataStd, eps = 2.0, MinPts = 5)
 # Plot DBSCAN results
 library("factoextra")
 fviz_cluster(db, data = SurveyDataStd, stand = FALSE,
              ellipse = FALSE, show.clust.cent = FALSE,
-             geom = "point",palette = "jco", ggtheme = theme_classic())
+             geom = "point",palette = "jco", ggtheme = theme_classic(),
+             main = "Density based clustering - DBSCAN")
 
 
-db0 <- fpc::dbscan(SurveyDataStd0, eps = 4.0, MinPts = 5)
-# Plot DBSCAN results
-library("factoextra")
-fviz_cluster(db0, data = SurveyDataStd, stand = FALSE,
-             ellipse = FALSE, show.clust.cent = FALSE,
-             geom = "point",palette = "jco", ggtheme = theme_classic())
+# db0 <- fpc::dbscan(SurveyDataStd0, eps = 4.0, MinPts = 5)
+# # Plot DBSCAN results
+# library("factoextra")
+# fviz_cluster(db0, data = SurveyDataStd, stand = FALSE,
+#              ellipse = FALSE, show.clust.cent = FALSE,
+#              geom = "point",palette = "jco", ggtheme = theme_classic())
 ```
 
-# tsne
+### 6.1.5 T-distributed Stochastic neighborhood embedding (TSNE)
 
-```{r}
+We attempt to use T-SNE to bring out inherrent clusters in the data and the PAM method is used to cluster the SNE scores. The PCA technique gave a similar result as below. 
+
+
+```{r,message=F, warning=FALSE}
 library(Rtsne)
 rownames(SurveyDataStd) <- rownames(SurveyData)
-tsne <- Rtsne::Rtsne(distinct(SurveyDataStd),dims = 2, perplexity=30, verbose=TRUE, max_iter = 500,pca_center = F)
+tsne <- Rtsne::Rtsne(distinct(SurveyDataStd),dims = 2, perplexity=30, max_iter = 500,pca_center = F)
 
-dbscan::kNNdistplot(tsne$Y, k =  6)
-abline(h = 1.5, lty = 2)
+# dbscan::kNNdistplot(tsne$Y, k =  6)
+# abline(h = 1.5, lty = 2)
 
 
 tsne0 <- Rtsne::Rtsne(SurveyDataStd0,dims = 2, perplexity=30, verbose=TRUE, max_iter = 500,pca_center = F)
-
-dbscan::kNNdistplot(tsne0$Y, k =  6)
-abline(h = 1.5, lty = 2)
+tsnedf0 <- tsne0$Y
+# dbscan::kNNdistplot(tsne0$Y, k =  6)
+# abline(h = 1.5, lty = 2)
 ```
 
 ```{r}
-db2 <- fpc::dbscan(tsne$Y, eps = 1.5, MinPts = 3)
+# db2 <- fpc::dbscan(tsne$Y, eps = 1.5, MinPts = 3)
 
 # Plot DBSCAN results
 library("factoextra")
 tsnedf <- tsne$Y
 colnames(tsnedf) <- c('Dim1','Dim2')
-fviz_cluster(db2, data = tsnedf, stand = FALSE,
-             ellipse = FALSE, show.clust.cent = FALSE,
-             geom = "point", ggtheme = theme_classic(),
-             palette = 'fco')
+# fviz_cluster(db2, data = tsnedf, stand = FALSE,
+#              ellipse = FALSE, show.clust.cent = FALSE,
+#              geom = "point", ggtheme = theme_classic(),
+#              palette = 'fco')
 
 
-db20 <- fpc::dbscan(tsne0$Y, eps = 1.5, MinPts = 3)
-
-# Plot DBSCAN results
-library("factoextra")
-tsnedf0 <- tsne0$Y
-colnames(tsnedf0) <- c('Dim1','Dim2')
-fviz_cluster(db20, data = tsnedf0, stand = FALSE,
-             ellipse = FALSE, show.clust.cent = FALSE,
-             geom = "point", ggtheme = theme_classic(),
-             palette = 'fco')
-```
-
-```{r}
-fviz_nbclust(tsnedf, pam, method = "wss")
-
-fviz_nbclust(tsnedf0, pam, method = "wss")
-```
-
-```{r}
-set.seed(10)
-pamclust3 <- pam(tsnedf,3)
-fviz_cluster(pamclust3, 
-             palette = "jco", # color palette
-             ellipse = T,
-             #ellipse.type = "t", # Concentration ellipse
-             repel = F, # Avoid label overplotting (slow)
-             labelsize = 3,
-             ggtheme = theme_classic(),
-             stand = F
-             )
-
-pamclust4 <- pam(tsnedf,4)
-fviz_cluster(pamclust4,
-             palette = "jco", # color palette
-             ellipse = T,
-             #ellipse.type = "t", # Concentration ellipse
-             repel = F, # Avoid label overplotting (slow)
-             labelsize = 3,
-             ggtheme = theme_classic(),
-             stand = F
-             )
+# db20 <- fpc::dbscan(tsne0$Y, eps = 1.5, MinPts = 3)
 # 
+# # Plot DBSCAN results
+# library("factoextra")
+# tsnedf0 <- tsne0$Y
+# colnames(tsnedf0) <- c('Dim1','Dim2')
+# fviz_cluster(db20, data = tsnedf0, stand = FALSE,
+#              ellipse = FALSE, show.clust.cent = FALSE,
+#              geom = "point", ggtheme = theme_classic(),
+#              palette = 'fco',
+#              main = "Density based clusters",
+#              )
+```
+
+```{r, fig.width=4, fig.cap = "tsne scores clustering- PAM"}
+tsnenk <- fviz_nbclust(tsnedf, pam, method = "wss")
+set.seed(10)
+pamclust4 <- pam(tsnedf,4)
+tsnedfpam4 <- fviz_cluster(pamclust4,
+             palette = "jco", # color palette
+             ellipse = T,
+             #ellipse.type = "t", # Concentration ellipse
+             repel = F, # Avoid label overplotting (slow)
+             labelsize = 3,
+             ggtheme = theme_classic(),
+             stand = F,
+             main = "4 Cluster solution"
+             )
+
+
+gridExtra::grid.arrange(tsnenk,tsnedfpam4, ncol = 2)
+#fviz_nbclust(tsnedf0, pam, method = "wss")
+```
+
+```{r,eval=T}
+# pamclust3 <- pam(tsnedf,3)
+# fviz_cluster(pamclust3, 
+#              palette = "jco", # color palette
+#              ellipse = T,
+#              #ellipse.type = "t", # Concentration ellipse
+#              repel = F, # Avoid label overplotting (slow)
+#              labelsize = 3,
+#              ggtheme = theme_classic(),
+#              stand = F
+#              )
+
+
 # pamclust5 <- pam(tsnedf,5)
 # fviz_cluster(pamclust5, 
 #              palette = "jco", # color palette
@@ -498,20 +542,20 @@ fviz_cluster(pamclust4,
 #              stand = F
 #              )
 set.seed(10)
-pamclust09 <- pam(tsnedf0,9)
-fviz_cluster(pamclust09, 
-             palette = "jco", # color palette
-             ellipse = T,
-             #ellipse.type = "t", # Concentration ellipse
-             repel = F, # Avoid label overplotting (slow)
-             labelsize = 3,
-             ggtheme = theme_classic(),
-             stand = F
-             )
+pamclust04 <- pam(tsnedf0,4)
+# fviz_cluster(pamclust04, 
+#              palette = "jco", # color palette
+#              ellipse = T,
+#              #ellipse.type = "t", # Concentration ellipse
+#              repel = F, # Avoid label overplotting (slow)
+#              labelsize = 3,
+#              ggtheme = theme_classic(),
+#              stand = F
+#              )
 ```
 
 ```{r}
-clusters <- pamclust3$clustering
+clusters <- pamclust4$clustering
 
 # put it back into SurveyData
 SurveyData %<>%
@@ -527,7 +571,7 @@ SurveyData %<>% select(-rowname)
 
 
 
-clusters0 <- pamclust09$clustering
+clusters0 <- pamclust04$clustering
 
 # put it back into SurveyData
 SurveyData0 %<>%
@@ -535,9 +579,28 @@ SurveyData0 %<>%
 rownames(SurveyData0) <- rownames(SurveyData_copy0)
 ```
 
-# Random Forest
+## 6.2 Attitudinal Segmentation interpretation
+
+The clusters are profiled by using decision trees to augment proper interpretation of the customer segments. The decision tree is shown in the below figure. The interpretation of the segments is summarized in the below. The term late adopter in the table below is meant to describe those consumers who readily do not try a new product in the market until others have done so. 
+
+(Again, the high frequency of use of websites is assumed to be as a result of either the consumer has easy access to a computer or does not prefer the experience of a web-enabled hand held device.) 
+
+Before suggesting a potential product for AppHappy, it would be useful to study what consumers use on their web-enabled devices and evaluate potential market saturation or barrier for entry into new market.
 
 ```{r}
+ClassDesc <- c("Busy,Upper middle class shopper", "Middle income,late adopter,social media user", "Above average income late adopter, web video consumer", "Non social late adopter")
+Samples <- paste0(round(c(530,429,435,401)/sum(c(530,429,435,401))*100,1),"%")
+ClusterID <- c(4,1,2,3)
+WayToReach <- c('Internet Radio','Ad spaces on social media video page', 'Ad spaces on social media video page',"Unknown")
+
+pander::pander(data.frame(Segment = ClassDesc, Percent_Surveyee = Samples, MarketingStrategy = WayToReach, ClusterID = ClusterID), caption = "Market Segmentation Summary")
+```
+
+
+
+
+```{r}
+library(partykit)
 # Change Clusters into a factor
 SurveyData$Clusters <- as.factor(SurveyData$Clusters)
 
@@ -547,17 +610,56 @@ dtree_fit <- train(Clusters ~., data = SurveyData, method = "rpart",
                    trControl = trctrl,
                    tuneLength = 10)
 
+
+
 mdlfit <- dtree_fit$finalModel
 
 mdlfit <- partykit::as.party(mdlfit)
 
-plot(mdlfit)
+plot(mdlfit,type = c("simple"), gp = gpar(fontsize = 6),drop_terminal = TRUE, tnex=1,
+     terminal_panel=node_barplot(mdlfit, col = "black", fill = c('red','orange','green','blue'), beside = TRUE,
+                                  ymax = 1, ylines = TRUE, widths = 1,
+                                  reverse = FALSE))
+
+```
+
+## 6.3 Barrier to market entry & Product differentiation
+
+A partial study of potential barrier to entry into the new market is done by analyzing the survey results. The goal is to find what applications are in the market and been used by consumers and what may be opportunities for product differerntiation for AppHappy. Question 4 of the survey touches on what category of apps are being used by consumers. However, one must be careful in reading too much into these responses from the surveyees for the following reasons
+
+### 6.3.1 Issues in the Survey Questionnaire
+
+    -   The survey asks what category of apps are being used, but doesn ot ask for frequency of use.
+    -   The Category "Other" is not explained in the survey can be very subjective.
+    -   The survey could have asked for average screen time on web-enabled hand held device, so that web page visits          can be assertained if the consumer does not like the experience of an app on his/her device.
+    
+### 6.3.2 Segmentation of Apps in the market
+
+The inherent structure in the responses to question 4 after refinement of the mentioned categories in the survey (pooling similar categories as one) is as shown in the decision tree below. Again a 4 cluster solution with question 4 responsed added to the list of chosen features was obtained, using PAM clustering method. 
+
+The Segments in the App market is summarised in the table below
+
+```{r}
+AppCombo <- c("SocialMedia; Music; Shopping & Entertainment",
+              "Social, No Music and No Shopping",
+              "Social, music and gaming",
+              "No social")
+SampleCombo <- paste0(round(c(391,215,370,342)/sum(c(391,215,370,342))*100,2),'%')
+
+pander::pander(data.frame(AppsUsed = AppCombo,
+                          Percent_Surveyee = SampleCombo,
+                          ClusterID = c(3,1,2,4)))
+
+```
 
 
+
+
+```{r,eval=T,fig.cap="App segmentation - barrier to entry/Produsct differentiation"}
 
 # Change Clusters into a factor
 SurveyData0$Clusters <- as.factor(SurveyData0$Clusters)
-
+SurveyData0$age <- apphappy.3.num.frame$q1
 # Train a classification tree
 trctrl <- trainControl(method = "repeatedcv", number = 10, repeats = 3)
 dtree_fit0 <- train(Clusters ~., data = SurveyData0, method = "rpart",
@@ -568,6 +670,23 @@ mdlfit0 <- dtree_fit0$finalModel
 
 mdlfit0 <- partykit::as.party(mdlfit0)
 
-plot(mdlfit0)
+plot(mdlfit0,type = c("simple"), gp = gpar(fontsize = 6),drop_terminal = TRUE, tnex=1,
+     terminal_panel=node_barplot(mdlfit0, beside = TRUE,
+                                 fill = c('red','orange','green','blue'),
+                                  ymax = 1, ylines = TRUE, widths = 1,
+                                  reverse = FALSE))
+test <- SurveyData %>% mutate(CaseID = as.numeric(rownames(SurveyData)),
+                              ClustersID = Clusters) %>% 
+  select(-Clusters)
+test0 <- SurveyData0 %>% mutate(CaseID = apphappy.3.num.frame$caseID,
+                              ClustersID0 = Clusters) %>% 
+  select(-Clusters)
+
+test2 <- merge.data.frame(test,test0)
+
+table(test2$ClustersID,test2$ClustersID0)
 ```
+
+# 7. Product Recommendation
+
 
